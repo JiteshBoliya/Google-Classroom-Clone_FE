@@ -1,0 +1,54 @@
+.nv{
+    background-color: rgb(6, 6, 6);
+    position:fixed;
+    z-index: 1;
+    border-radius: 0px 50px 50px 0px;
+}
+.nav a{
+    color: aliceblue;
+    cursor: pointer;
+}
+.cv{
+    background-image: url('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg');
+    margin:10px;
+    padding: 10px;
+    height: 20vh;
+    position: relative;
+    border-radius:10px;
+    color:white;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
+}
+.footer{
+    position:absolute;
+    bottom:0px;
+}
+.jumbo-class-code{
+    height:fit-content;
+    padding: 20px;
+    color:black;
+    font-weight: 400;
+    background-color:white;    
+    box-shadow: 0 0px 7px rgba(0, 0, 0, 0.5);
+}
+.jumbo-class-code h4{
+    color:maroon;
+    font-weight: 600;
+}
+.in-post{
+    border:0px;
+    height:30px;
+    width: 100%;
+}.in-post:focus{
+    border-bottom: 0px;
+}
+.in-comment{
+    border:1px black solid;
+    height:40px;
+    padding: 20px;
+    width: 100%;
+    border-radius:20px;
+}
+.bod{
+    background-image: linear-gradient(white,rgb(107, 105, 105));
+    min-height: 100vh;
+}

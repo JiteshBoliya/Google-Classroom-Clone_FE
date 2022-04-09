@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #025793;position:sticky;top:0px">
+    <img width="40" alt="Classroom" src="https://i.pinimg.com/originals/08/1d/9f/081d9fbd94372cd42dc6b0368f4628f8.png" />
+    <a class="navbar-brand" href="#">MyClass</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation"></button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="home" >Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="toClass()" >Class</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">To-Do</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Setting</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <img *ngIf="name==null" (click)="signIn()" width="30" alt="Classroom" src="https://cdn-icons-png.flaticon.com/512/295/295128.png" style="cursor:pointer;" data-toggle="tooltip" data-placement="bottom" title="Login" />
+            <button 
+                class="logoutbtn" 
+                type="button" 
+                name="logout" 
+                value="Logga ut" 
+                id="logout" 
+                *ngIf="name!=null" 
+                (click)="sweetAlert()"  
+                data-toggle="tooltip" 
+                data-placement="bottom" 
+                title="Logout" >
+                {{name}}</button>
+        </form>
+    </div>
+</nav>

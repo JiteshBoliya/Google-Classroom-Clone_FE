@@ -1,0 +1,25 @@
+.bod{
+    padding: 0px 100px 100px;
+}
+.bt-cr{
+    border-radius: 20px;
+    /* top: 5px; */
+    position: relative;
+    box-shadow: 0px 0px 5px gray;
+}
+.list{
+    padding: 1px;
+}
+.list ul{
+    list-style-type:none;
+}
+.list ul li{
+    background-color: white;
+    padding: 10px;
+}
+.list ul li:hover{
+    background-color: rgb(65, 156, 242);
+    padding: 10px;
+    color: white;
+    box-shadow: 0px 0px 10px gray;
+}

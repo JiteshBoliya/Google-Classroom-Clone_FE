@@ -1,0 +1,80 @@
+<div  >
+    <div id="home" class="jumbotron jumbotr" align="center">
+        <div class="container-wel" align="center">
+            <img width="200" src="https://i.pinimg.com/originals/08/1d/9f/081d9fbd94372cd42dc6b0368f4628f8.png"
+                alt="logo">
+            <h1>Where teaching and learning come together</h1>
+            <p>Google Classroom is your all-in-one place for teaching and learning. Our easy-to-use and secure tool
+                helps educators manage, measure, and enrich learning experiences.
+            </p>
+
+        </div>
+        <div class="container1 row">
+            <div class="card1 col-lg-3">
+                <div class="face face1">
+                    <div class="content" style="color:white">
+                        <img
+                            src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/design_128.png?raw=true">
+                        <h3>Create class</h3>
+                    </div>
+                </div>
+                <div class="face face2 ">
+                    <div class="content">
+                        <p>
+                            <input type="text" name="name" id="" class="form-control" placeholder="Class name"><br>
+                            <input type="text" name="subject" id="" class="form-control" placeholder="Subject"> <br>
+                        </p>
+                        <button class="btn btn-primary">Create</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card1 col-lg-3">
+                <div class="face face1">
+                    <div class="content">
+                        <img
+                            src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/code_128.png?raw=true">
+                        <h3>Join class</h3>
+                    </div>
+                </div>
+
+                <div class="face face2">
+                    <div class="content">
+                        <p>
+                            <input type="text" name="code" id="" class="form-control" placeholder="Class Code">
+                        </p>
+                        <br><i>Class code provided by Admin of class</i><br>
+                        <button class="btn btn-primary">Join</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="class" class="jumbotron jbr">
+    <h1 style="color: black; font-family:monospace ;font-size: 40px; color: rgb(4, 4, 54);"   >Class</h1><hr>
+        <div class="row">
+
+        <a class="col-lg-2" routerLink="/stream" *ngFor="let class of classes" >
+            <div class="card">
+                <div class="card-body cust">
+                    <div class="imge">
+                        <p>{{class.name}}</p>
+                    </div>
+                    <div class="crdbody">
+                        <b>{{class.subject}}</b>
+                    </div>
+                    <div class="crdfoot">
+                        <hr><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
+                            <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
+                          </svg>
+                    </div>
+                </div>
+            </div>
+        </a>
+      </div>
+      <button class="btn bt-home" (click)="toHome()"><img src="https://img.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg?w=2000" alt="">
+      </button>
+    </div>
+    
+</div>
+<!-- 
+    ------------------------------------------------------- --> 
