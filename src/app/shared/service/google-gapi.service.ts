@@ -11,7 +11,7 @@ export class GoogleGapiService {
   private auth2!: gapi.auth2.GoogleAuth
   private subject = new ReplaySubject<gapi.auth2.GoogleUser>(1)
   private userObj: any;
-  private name:any;
+  public name:any;
   private email:any;
 
   constructor() {
@@ -30,8 +30,8 @@ export class GoogleGapiService {
       this.auth2.signIn().then(user => {
         this.userObj = user;
         console.log(this.userObj);
-
-        res(this.userObj.Du.tv);
+        this.name=this.userObj.Du.tf
+        res({name:this.userObj.Du.tf,email:this.userObj.Du.tv});
       }).catch((e) => {
         console.log(e)
       })
@@ -47,14 +47,14 @@ export class GoogleGapiService {
       })
     })
   }
-  public signout() {
-    return new Promise((res, rej) => {
-      this.auth2.signOut().then(() => {
-        this.auth2.disconnect()
-        res(null)
-      })
-    })
-  }
+  // public signout() {
+  //   return new Promise((res, rej) => {
+  //     this.auth2.signOut().then(() => {
+  //       this.auth2.disconnect()
+  //       res(null)
+  //     })
+  //   })
+  // }
   public observable(): Observable<gapi.auth2.GoogleUser> {
     return this.subject.asObservable()
   }

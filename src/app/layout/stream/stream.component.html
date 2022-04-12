@@ -1,12 +1,16 @@
-<nav class="navbar nav justify-content-center nv">
-    <a class="nav-link">Stream</a>
-    <a class="nav-link">Classwork</a>
-    <a class="nav-link">People</a>
-    <a class="nav-link">Marks</a>
-</nav>
-<div class="bod">
-    <div class="container">
-        <div class="container cv">
+
+<div class="bod ">
+    <div class="nv">
+        <nav class="navbar nav justify-content-center">
+            <a class="nav-link" routerLink="/home"><img src="https://www.rspapad.com/images/Home-Icon2.png" alt="" height="30px"></a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/stream">Stream</a>
+            <a class="nav-link">Classwork</a>
+            <a class="nav-link">People</a>
+            <a class="nav-link">Marks</a>
+        </nav>
+    </div>
+    <div class="container" >
+        <div class="container-fluid cv">
             <div class="footer">
                 <h1>Angular</h1>
                 <h5>Class A</h5>
@@ -35,8 +39,8 @@
                     </div>
                     <div class="col-md-11">
                         <input type="text" name="addpost" placeholder="Announce something to your class"
-                            class="in-post">
-                    </div>
+                                class="in-post">
+                        </div>
                 </div>
 
                 <div class="jumbotron jumbo-class-code row" *ngFor="let post of posts">

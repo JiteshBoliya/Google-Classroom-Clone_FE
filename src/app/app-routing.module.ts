@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClassComponent } from './class/class.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { StreamComponent } from './stream/stream.component';
+import { ClassComponent } from './layout/class/class.component';
+import { HomepageComponent } from './layout/homepage/homepage.component';
+import { StreamComponent } from './layout/stream/stream.component';
+import { LoginComponent } from './layout/login/login.component';
 
 const routes: Routes = [  
-// { path:'',redirectTo:'/home', pathMatch: 'full'},
+{ path:'',redirectTo:'/login', pathMatch: 'full'},
+{ path: 'login', component: LoginComponent},
 { path: 'home', component: HomepageComponent },
 // { path: 'class', component: ClassComponent },
 { path: 'stream', component:StreamComponent}

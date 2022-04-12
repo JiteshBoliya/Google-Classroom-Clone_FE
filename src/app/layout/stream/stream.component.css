@@ -1,8 +1,11 @@
 .nv{
-    background-color: rgb(6, 6, 6);
-    position:fixed;
-    z-index: 1;
-    border-radius: 0px 50px 50px 0px;
+    background-color: rgb(3, 58, 120);
+    width:100%;
+}
+.active{
+    background-color: white;
+    color: black !important;
+    border-radius: 50px;
 }
 .nav a{
     color: aliceblue;
@@ -10,9 +13,9 @@
 }
 .cv{
     background-image: url('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg');
-    margin:10px;
-    padding: 10px;
-    height: 20vh;
+    margin:5px;
+    /* padding: 10px; */
+    min-height: 20vh;
     position: relative;
     border-radius:10px;
     color:white;
@@ -20,7 +23,7 @@
 }
 .footer{
     position:absolute;
-    bottom:0px;
+    bottom: 0px;
 }
 .jumbo-class-code{
     height:fit-content;
@@ -48,7 +51,15 @@
     width: 100%;
     border-radius:20px;
 }
+
+.in-post{
+    /* border:1px black solid; */
+    height:40px;
+    padding: 20px;
+    width: 100%;
+    border-radius:20px;
+}
 .bod{
-    background-image: linear-gradient(white,rgb(107, 105, 105));
+    background-image: linear-gradient(white,rgb(3, 58, 120));
     min-height: 100vh;
 }

@@ -11,27 +11,30 @@
             <li class="nav-item">
                 <a class="nav-link" (click)="toClass()" >Class</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#">To-Do</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Setting</a>
-            </li>
+            </li> -->
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <img *ngIf="name==null" (click)="signIn()" width="30" alt="Classroom" src="https://cdn-icons-png.flaticon.com/512/295/295128.png" style="cursor:pointer;" data-toggle="tooltip" data-placement="bottom" title="Login" />
             <button 
                 class="logoutbtn" 
                 type="button" 
                 name="logout" 
-                value="Logga ut" 
+                value="Loggaut" 
                 id="logout" 
                 *ngIf="name!=null" 
                 (click)="sweetAlert()"  
                 data-toggle="tooltip" 
                 data-placement="bottom" 
                 title="Logout" >
-                {{name}}</button>
+                {{name}}    
+                </button>
+                <!-- <button class="loginbtn">
+                    {{name}}
+                </button> -->
         </form>
     </div>
 </nav>

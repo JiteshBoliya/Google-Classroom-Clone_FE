@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { GoogleGapiService } from './google-gapi.service';
+import { GoogleGapiService } from './shared/service/google-gapi.service';
 
 @Component({
   selector: 'app-root',
@@ -20,12 +20,13 @@ export class AppComponent implements OnInit {
     })  
     throw new Error('Method not implemented.');
   }
-  signIn(){
-    this.signinservice.signin().then((res)=>{
-      this.name = res
-    })
-    // console.log("eee",this.name)
-  }
-  signOut(){this.signinservice.signout()  }
+  
+  // signIn(){
+  //   this.signinservice.signin().then((res)=>{
+  //     this.name = res
+  //   })
+  // }
+  // signOut(){this.signinservice.signout()
+  // }
   
 }

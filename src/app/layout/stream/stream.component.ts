@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {StreamsrvService} from './streamsrv.service'
+import {StreamsrvService} from '../../shared/service/streamsrv.service'
 
 @Component({
   selector: 'app-stream',
