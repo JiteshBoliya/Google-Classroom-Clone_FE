@@ -1,16 +1,114 @@
-<div class="bod" align="center">
+<div class="bod">
+  <app-stream></app-stream>
+  <div class="container" align="center">
     <div class="jumbotron" align="left">
-        <button class="btn btn-primary bt-cr">
-           + Create
-        </button>
-        <div class="list">
-            <br>
-            <ul>
-                <li>Assignment</li>
-                <li>Assignment</li>
-                <li>Assignment</li>
-                <li>Assignment</li>
-            </ul>
-        </div>
+      <button class="btn btn-primary bt-cr" (click)="onSubmit()">
+        + Create
+      </button>
+      <div class="list">
+          
+        <div class="element">
+            <mat-accordion>
+              <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+              >
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <img src="https://png.pngtree.com/png-vector/20190930/ourmid/pngtree-to-do-list-icon-cartoon-style-png-image_1768114.jpg" alt="" height="50px">  
+                    <b><i>Assignment </i></b> </mat-panel-title>
+                  <mat-panel-description>
+                    Due date : 03/04/2022
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <hr />
+                <div class="as_body row">
+                    <div class="col-md-8" >
+                        <p>some data</p>
+                    </div>
+                    <div class="col-md-2"align="center">
+                        <h1>0</h1><h4><b> Handed in</b></h4>
+                    </div>
+                    <div class="col-md-2" align="center">
+                        <h1>0</h1><h4><b>Assigned</b></h4>
+                    </div>
+                </div>
+                <hr />
+                <div class="as_foot">
+                  <a routerLink="/Instruction"><b>View assignment</b> </a>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+
+        <div class="element">
+            <mat-accordion>
+              <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+              >
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <img src="https://png.pngtree.com/png-vector/20190930/ourmid/pngtree-to-do-list-icon-cartoon-style-png-image_1768114.jpg" alt="" height="50px">  
+                    <b><i>Assignment </i></b> </mat-panel-title>
+                  <mat-panel-description>
+                    Due date : 03/04/2022
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <hr />
+                <div class="as_body row">
+                    <div class="col-md-8" >
+                        <p>some data</p>
+                    </div>
+                    <div class="col-md-2"align="center">
+                        <h1>0</h1><h4><b> Handed in</b></h4>
+                    </div>
+                    <div class="col-md-2" align="center">
+                        <h1>0</h1><h4><b>Assigned</b></h4>
+                    </div>
+                </div>
+                <hr />
+                <div class="as_foot">
+                  <a routerLink="/Instruction"><b>View assignment</b> </a>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+
+        <div class="element">
+            <mat-accordion>
+              <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+              >
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <img src="https://png.pngtree.com/png-vector/20190930/ourmid/pngtree-to-do-list-icon-cartoon-style-png-image_1768114.jpg" alt="" height="50px">  
+                    <b><i>Assignment </i></b> </mat-panel-title>
+                  <mat-panel-description>
+                    Due date : 03/04/2022
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <hr />
+                <div class="as_body row">
+                    <div class="col-md-8" >
+                        <p>some data</p>
+                    </div>
+                    <div class="col-md-2"align="center">
+                        <h1>0</h1><h4><b> Handed in</b></h4>
+                    </div>
+                    <div class="col-md-2" align="center">
+                        <h1>0</h1><h4><b>Assigned</b></h4>
+                    </div>
+                </div>
+                <hr />
+                <div class="as_foot">
+                  <a routerLink="/Instruction"><b>View assignment</b> </a>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { GoogleGapiService } from '../../shared/service/google-gapi.service';
 import { AuthService } from 'src/app/shared/service/auth.service';
 import { Router } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/service/auth.guard';
 
 @Component({
   selector: 'app-login',
@@ -10,32 +11,25 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   user!: any
-  name:any;
-  constructor(private signinservice: GoogleGapiService,private ref:ChangeDetectorRef,private router:Router,private authservice:AuthService) { }
+  name!: any
+  constructor(private signinservice: GoogleGapiService, 
+              private ref: ChangeDetectorRef, 
+              private router: Router, 
+              private authservice: AuthService, 
+              private authguard: AuthGuard) { }
 
-  ngOnInit(): void {
-        this.user = this.authservice.getToken();
-        const userdata = localStorage.getItem('userData');
-        console.log(userdata,"hii",this.user);
-        if(this.user==userdata && this.user!=null) this.router.navigate(['/home'])
-  }
-  signIn(){
-    this.signinservice.signin().then((res)=>{
-      // this.authservice.userRegister(res).subscribe()
-       this.authservice.userLogin(res).subscribe(
-        res=>{
-          console.log(res)
-           localStorage.setItem('userData',res.token);
-           console.log("user:",res.user.name);
-           localStorage.setItem('name',res.user.name)
-           this.router.navigate(['/home'])
-        }
-      )
-      this.name = res
+  ngOnInit(): void { if (this.authguard.canActivate() == true) this.router.navigate(['/home'])}
+  signIn() {
+    this.signinservice.signin().then((res) => {
+      this.authservice.userLogin(res).subscribe(
+        res => {
+          // console.log("name:",res.user);
+          this.authservice.updateUser(res.user)
+          this.authservice.userId=res.user
+          localStorage.setItem('userid', res.user._id)
+          localStorage.setItem('userData', res.user.token)
+          this.router.navigate(['/home'])
+        })
     })
   }
-  // signOut(){this.signinservice.signout().then((res)=>{
-  //   this.name=res
-  // })
-// }
 }

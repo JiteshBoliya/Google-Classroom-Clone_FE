@@ -1,8 +1,22 @@
 <div class="page" align="center">
+    <!-- <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload"
+         data-client_id="407117015407-gksld6ruke97k5ngbqqbq9019e3ask34.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div> -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload"
+         data-client_id="YOUR_CLIENT_ID"
+         data-ux_mode="redirect"
+         data-login_uri="https://www.example.com/your_login_endpoint">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+  
+    <div class="g_id_signin" data-type="standard"></div>
     <div class="g-card">
-        <img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c51f.png" alt="" height="30px" width="70px">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Google_1998_logo.png" alt="" height="50px" width="130px">
         <hr>
-        <h2>login With <b>Google</b></h2>
+        <!-- <h2><b>Google</b> Login</h2> -->
         <!-- <button class="btn" (click)="signIn()" data-onsuccess="onSignIn">Login</button> -->
         <img width="200" src="https://i.pinimg.com/originals/08/1d/9f/081d9fbd94372cd42dc6b0368f4628f8.png"
                 alt="logo">
@@ -10,6 +24,7 @@
                     <b style="color: brown;font-size: 30px;">Class</b>
                     </h3>
             <br>
+            <hr>
         <button class="btn" (click)="signIn()">Login</button>
     </div>
 </div>

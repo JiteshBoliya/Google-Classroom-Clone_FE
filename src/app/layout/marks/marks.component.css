@@ -1,0 +1,5 @@
+.bod{
+    align-items: center;
+    background-image: linear-gradient(white,rgb(3, 58, 120));
+    min-height: 100vh;
+}

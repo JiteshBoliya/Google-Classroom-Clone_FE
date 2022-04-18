@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthGuard } from '../shared/service/auth.guard';
 import { AuthService } from '../shared/service/auth.service';
 import { GoogleGapiService } from '../shared/service/google-gapi.service';
 
@@ -11,29 +12,46 @@ import { GoogleGapiService } from '../shared/service/google-gapi.service';
 })
 export class HeaderComponent implements OnInit {
   user!: any
-  name: any;
-  constructor(private signinservice: GoogleGapiService, private ref: ChangeDetectorRef, private router: Router, private auth: AuthService) { }
+  uname: any
+  userDetail:any
+  constructor(private signinservice: GoogleGapiService, 
+              private ref: ChangeDetectorRef, 
+              private router: Router, 
+              private auth: AuthService,
+              private authguard:AuthGuard) { }
   ngOnInit(): void {
-    this.user = this.auth.getToken();
-    const userdata = localStorage.getItem('userData')
-    if (this.user != userdata || this.user==null ) {
-      this.router.navigate(['/login'])
-    }
-    this.name = localStorage.getItem('name')
+
+      // #Get user name
+      // this.auth.getUser(localStorage.getItem('userData')).subscribe(res=>{this.uname=res.name})
+      this.auth.usersubject.subscribe(res=>{
+        this.uname=res.name
+      })
+
+      if(this.uname==null){
+        this.auth.getUser(localStorage.getItem('userid')).subscribe(res=>{
+          this.auth.updateUser(res)
+        })
+      }
+
+    // #Auto logout
+    if (this.authguard.canActivate() == false) this.router.navigate(['/login'])
   }
+
+
+
+
+  // #Logout the user-Delete token
   signOut() {
-    // this.signinservice.signout().then((res)=>{
-    this.user = this.auth.getToken();
     this.auth.logout(this.user)
+    localStorage.removeItem('userid');
     localStorage.removeItem('userData');
     this.router.navigate(['/login'])
-    // })
-    //   this.router.navigate(['/login'])
-    // }) 
   }
+
+  // #SweetAlert for Logout
   sweetAlert() {
     Swal.fire({
-      title: 'Are you sure want to Logout ' + this.name + ' ?',
+      title: 'Are you sure want to Logout ' + this.uname + ' ?',
       text: '',
       icon: 'warning',
       showCancelButton: true,
@@ -56,6 +74,12 @@ export class HeaderComponent implements OnInit {
       }
     })
   }
+
+  // #Scroll Effect
+  toHome() {
+    document.getElementById("home")?.scrollIntoView({ behavior: "smooth" })
+  }
+  // #Scroll to class container
   toClass() {
     document.getElementById("class")?.scrollIntoView({ behavior: "smooth" })
   }

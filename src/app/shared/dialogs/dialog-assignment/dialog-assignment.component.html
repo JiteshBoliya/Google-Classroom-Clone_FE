@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Create Assignment</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form">
+            <!-- <mat-form-field>
+                    <input  matInput  placeholder="your email" [(ngModel)]="email"  type="email" name="email"  required>
+                </mat-form-field> -->
+
+            <!-- Title -->
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput type="text" name="title" required />
+            </mat-form-field>
+
+            <!-- Description -->
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput></textarea>
+            </mat-form-field>
+
+            <!-- Points -->
+            <mat-form-field appearance="fill">
+                <mat-label>Points</mat-label>
+                <input matInput type="number" name="points" required />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+            <!-- Duedate -->
+                <mat-label>Due Date</mat-label>
+                <input matInput type="date" name="points" required />
+            </mat-form-field>
+
+            <!-- file-upload -->
+            <mat-form-field class="example-full-width">
+                <div>
+                  <mat-toolbar>
+                    <!-- Display files names -->
+                    <input matInput [(ngModel)]="fileAttr" readonly name="name" />
+                    <!-- Browse Button -->
+                    <button mat-flat-button color="primary">Browse File</button>
+                  </mat-toolbar>
+                  <!-- Fetch selected filed on change -->
+                  <input
+                    type="file"
+                    #fileInput
+                    id="uploadFile"
+                    (change)="uploadFileEvt($event)"
+                    name="uploadFile"
+                    multiple="multiple"
+                    accept="image/*"
+                  />
+                </div>
+              </mat-form-field>
+            <mat-card-actions>
+                <button mat-raised-button class="form-control"  color="primary">
+                    Create 
+                </button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

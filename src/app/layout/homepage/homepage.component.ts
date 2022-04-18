@@ -3,7 +3,9 @@ import { GoogleGapiService } from '../../shared/service/google-gapi.service';
 import { ClasssrvService } from '../../shared/service/classsrv.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/service/auth.guard';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/shared/service/auth.service';
 
 @Component({
   selector: 'app-homepage',
@@ -12,41 +14,77 @@ import Swal from 'sweetalert2';
 })
 export class HomepageComponent implements OnInit {
   classes: any
-  user: any
+  user!: any
   public classForm !: FormGroup;
-  constructor(private classsub: ClasssrvService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private classsub: ClasssrvService, 
+              private formBuilder: FormBuilder, 
+              private router: Router,
+              private auth: AuthService,
+              private authguard:AuthGuard) { 
+              }
+
   ngOnInit(): void {
-    // this.classForm = this.formBuilder.group({
-    //   name: ['', Validators.required],
-    //   subject: ['', Validators.required]
-    // })
+
+    // #Get and Validate Rectiveform data
     this.classForm = new FormGroup({
       name: new FormControl("", Validators.required),
-      subject: new FormControl("", Validators.required)
+      subject: new FormControl("", Validators.required),
     })
-    this.classsub.classes().subscribe((data) => {
-      console.log(data);
-      this.classes = data;
+
+    if(this.auth.usersubject==null){
+      this.auth.getUser(localStorage.getItem('userid')).subscribe(res=>{
+        this.auth.updateUser(res)
+      })
+    }
+    else{
+      this.auth.usersubject.subscribe(res=>{
+        this.user=res
+      })
+    }
+    
+    
+    // #Get userdetail
+    // this.auth.getUser(localStorage.getItem('userData'))
+    // .subscribe(res=>{
+    //   this.user=res
+    //   this.classsub.getClass(res)
+    //   .subscribe((data) => {
+    //     this.classes = data
+    //     // console.log("data",data);
+    //   })
+    // })
+
+    this.classsub.getClass(localStorage.getItem('userid')).subscribe(res=>{
+      this.classes=res
     })
+
+    // #AuthGuard
+    if (this.authguard.canActivate() == false) this.router.navigate(['/login'])
   }
-  toHome() {
-    document.getElementById("home")?.scrollIntoView({ behavior: "smooth" })
-  }
+  
+  // #Add Class
   addClass() {
     const formData = new FormData()
-    console.log(this.classForm.get('name')?.value);
-
     formData.append('name', this.classForm.get('name')?.value)
     formData.append('subject', this.classForm.get('subject')?.value)
-    this.classsub.addClass(formData).subscribe(
+    // console.log(this.user);
+    this.classsub.addClass({name:formData.get('name'),subject:formData.get('subject'),owner:this.user._id}).subscribe(
       res => {
-        Swal.fire("Created", this.classForm.get('name')?.value, "success");
+        // console.log(res);
+        
+        // this.classsub.class=res
+        // this.classsub.classchanged.next(this.classsub.class)
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: '[ '+this.classForm.get('name')?.value+' ] Class created',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        // Swal.fire("Created", this.classForm.get('name')?.value, "success");
         this.classForm.reset()
       }
     )
-  }
+    // window.location.reload();
+  } 
 }
-function swal(arg0: { title: string; text: string; imageUrl: string; }) {
-  throw new Error('Function not implemented.');
-}
-

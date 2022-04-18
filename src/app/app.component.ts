@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
       this.user=users
       this.ref.detectChanges();
     })  
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
   
   // signIn(){

@@ -255,7 +255,7 @@
 }
 .jbr{
     width: 100%;
-    height: max-content;
+    height: fit-content;
     min-height: 100vh;
     z-index: 0;
     background-image: linear-gradient(white,rgb(3, 62, 107));

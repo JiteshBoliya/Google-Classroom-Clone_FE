@@ -41,7 +41,8 @@
                                     class="form-control" 
                                     placeholder="Class name"
                                     formControlName="name"
-                                    ><p *ngIf="!classForm.controls['name'].valid && classForm.controls['name'].touched" class="err">Classname is required</p> 
+                                    ><p *ngIf="!classForm.controls['name'].valid && classForm.controls['name'].touched" class="err">
+                                       <b>Classname is required</b></p> 
                                     <br>
                                     <!-- <span 
                                         class="error" 
@@ -52,18 +53,19 @@
                                     name="subject" 
                                     class="form-control" 
                                     placeholder="Subject"
-                                    formControlName="subject"
-                                    >
-                                    <p 
-                                    *ngIf="!classForm.controls['subject'].valid && classForm.controls['subject'].touched" class="err"> 
-                                        Subject is Required</p>
+                                    formControlName="subject">
+                                    <p *ngIf="!classForm.controls['subject'].valid && classForm.controls['subject'].touched" class="err"> 
+                                        <b>Subject is Required</b></p>
                                     <br>
-                                
+                                    <!-- <input type="text" 
+                                            name="owner" 
+                                            formControlName="owner" 
+                                            [value]="this.user._id"> -->
                             <!-- </p> -->
                             <button 
                                 class="btn btn-primary"
                                 type="submit"
-                                [disabled]="!classForm.valid"
+                                [hidden]="!classForm.valid"
                                 >Create</button>    
                         </form>
                     </div>
@@ -94,7 +96,7 @@
     <h1 style="color: black; font-family:monospace ;font-size: 40px; color: rgb(14, 14, 14);"   >Class</h1><hr>
         <div class="row">
 
-        <a class="col-lg-2" routerLink="/stream" *ngFor="let class of classes" >
+        <a class="col-lg-2" routerLink="/stream/post/{{class._id}}" *ngFor="let class of classes" >
             <div class="card">
                 <div class="card-body cust">
                     <div class="imge">
@@ -112,8 +114,8 @@
             </div>
         </a>
       </div>
-      <button class="btn bt-home" (click)="toHome()"><img src="https://img.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg?w=2000" alt="">
-      </button>
+      <!-- <button class="btn bt-home" (click)="toHome()"><img src="https://img.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg?w=2000" alt="">
+      </button> -->
     </div>
 </div>
 <!-- 

@@ -12,7 +12,7 @@ export class AuthInterceptorServiceService implements HttpInterceptor {
         Authorization: `Bearer ${authService.getToken()}`
       }
     })
-    console.log("Request",TokenizedReq)
+    // console.log("Request",TokenizedReq)
     return next.handle(TokenizedReq)
   }
 }
