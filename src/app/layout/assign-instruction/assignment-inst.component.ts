@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AssignsrvService } from 'src/app/shared/service/assignment.service';
 
 @Component({
   selector: 'app-assignment-nav',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./assignment-inst.component.css']
 })
 export class AssignmentNavComponent implements OnInit {
+  assignment?: any;
 
-  constructor() { }
+  constructor(private assign:AssignsrvService,private activeRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.assign.assignId=this.activeRoute.snapshot.paramMap.get('id')
+    this.assign.get_SpecificAssignment(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+      this.assignment=res
+      console.log(res);
+    })
+
   }
 
 }

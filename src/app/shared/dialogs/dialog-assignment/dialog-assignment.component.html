@@ -3,59 +3,40 @@
         <mat-card-title>Create Assignment</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form class="example-form">
-            <!-- <mat-form-field>
-                    <input  matInput  placeholder="your email" [(ngModel)]="email"  type="email" name="email"  required>
-                </mat-form-field> -->
-
+        <form class="example-form" [formGroup]="assignmentForm" (ngSubmit)="submitdata()">
+            <hr>
             <!-- Title -->
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Title</mat-label>
-                <input matInput type="text" name="title" required />
+                <input matInput type="text" formControlName="title" name="title" required />
             </mat-form-field>
 
             <!-- Description -->
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Description</mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput formControlName="description" name="description"></textarea>
             </mat-form-field>
 
             <!-- Points -->
             <mat-form-field appearance="fill">
                 <mat-label>Points</mat-label>
-                <input matInput type="number" name="points" required />
+                <input matInput type="number" formControlName="points" name="points" required />
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-            <!-- Duedate -->
+                <!-- Duedate -->
                 <mat-label>Due Date</mat-label>
-                <input matInput type="date" name="points" required />
+                <input matInput type="date" name="duedate" formControlName="duedate" required />
             </mat-form-field>
 
             <!-- file-upload -->
-            <mat-form-field class="example-full-width">
-                <div>
-                  <mat-toolbar>
-                    <!-- Display files names -->
-                    <input matInput [(ngModel)]="fileAttr" readonly name="name" />
-                    <!-- Browse Button -->
-                    <button mat-flat-button color="primary">Browse File</button>
-                  </mat-toolbar>
-                  <!-- Fetch selected filed on change -->
-                  <input
-                    type="file"
-                    #fileInput
-                    id="uploadFile"
-                    (change)="uploadFileEvt($event)"
-                    name="uploadFile"
-                    multiple="multiple"
-                    accept="image/*"
-                  />
-                </div>
-              </mat-form-field>
+            <button type="button" mat-raised-button (click)="fileInput.click()">  Choose File</button>
+            <input hidden (change)="uploadFileEvt($event)" #fileInput formControlName="file" multiple name="file" type="file" id="file"><i>{{text}}</i>
+            
+            <hr>
             <mat-card-actions>
-                <button mat-raised-button class="form-control"  color="primary">
-                    Create 
+                <button mat-raised-button mat-dialog-close type="submit" class="form-control" color="primary">
+                    Create
                 </button>
             </mat-card-actions>
         </form>

@@ -24,21 +24,16 @@ export class HeaderComponent implements OnInit {
       // #Get user name
       // this.auth.getUser(localStorage.getItem('userData')).subscribe(res=>{this.uname=res.name})
       this.auth.usersubject.subscribe(res=>{
-        this.uname=res.name
+        if(res==null){
+          this.auth.getUser(localStorage.getItem('userid')).subscribe(res=>{
+            this.auth.updateUser(res)
+          })
+        }
+        this.uname=res?res.name:''
       })
-
-      if(this.uname==null){
-        this.auth.getUser(localStorage.getItem('userid')).subscribe(res=>{
-          this.auth.updateUser(res)
-        })
-      }
-
     // #Auto logout
     if (this.authguard.canActivate() == false) this.router.navigate(['/login'])
   }
-
-
-
 
   // #Logout the user-Delete token
   signOut() {
@@ -78,9 +73,14 @@ export class HeaderComponent implements OnInit {
   // #Scroll Effect
   toHome() {
     document.getElementById("home")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("homenev").classList.add("active")
+    document.getElementById("classnev").classList.remove("active")
   }
   // #Scroll to class container
   toClass() {
     document.getElementById("class")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("classnev").classList.add("active")
+    document.getElementById("homenev").classList.remove("active")
   }
 }
+

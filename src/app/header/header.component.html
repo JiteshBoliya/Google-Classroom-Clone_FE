@@ -5,18 +5,12 @@
         aria-expanded="false" aria-label="Toggle navigation"></button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" (click)="toHome()" >Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item active" id="homenev">
+                <a class="nav-link" (click)="toHome()" >Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="classnev">
                 <a class="nav-link" (click)="toClass()" >Class</a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="#">To-Do</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Setting</a>
-            </li> -->
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <button 

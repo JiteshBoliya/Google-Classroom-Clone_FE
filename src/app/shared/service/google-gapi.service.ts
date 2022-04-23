@@ -23,10 +23,12 @@ export class GoogleGapiService {
     return new Promise((res, rej) => {
       this.auth2.signIn().then(user => {
         this.userObj = user
-        console.log(user);
+        // console.log(user);
                 
-        res({name:this.userObj.Du.tf,email:this.userObj.Du.tv});
-      }).catch((e) => {console.log(e)})
+        res({name:this.userObj.Lu.tf,email:this.userObj.Lu.Bv});
+      }).catch((e) => {
+        // console.log(e)
+      })
     })
   }
   public getuserdetail() {
@@ -34,7 +36,9 @@ export class GoogleGapiService {
       this.auth2.signIn().then(user => {
         this.userObj = user
         res(this.userObj)
-      }).catch((e) => {console.log(e)})
+      }).catch((e) => {
+        // console.log(e)
+      })
     })
   }
   // public signout() {

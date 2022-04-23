@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AssignsrvService } from 'src/app/shared/service/assignment.service';
 
 @Component({
   selector: 'app-assignment',
@@ -6,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./assignment.component.css']
 })
 export class AssignmentComponent implements OnInit {
-
-  constructor() { }
+  assignId:any
+  assignment:any
+  constructor(private assign:AssignsrvService) { }
 
   ngOnInit(): void {
+    this.assignId=this.assign.assignId
   }
 }

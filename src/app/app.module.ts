@@ -26,6 +26,7 @@ import{MatExpansionModule} from '@angular/material/expansion'
 import { DialogAssignmentComponent } from './shared/dialogs/dialog-assignment/dialog-assignment.component';
 import { AssignmentNavComponent } from './layout/assign-instruction/assignment-inst.component';
 import { AssignStudentWorkComponent } from './layout/assign-student-work/assign-student-work.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { AssignStudentWorkComponent } from './layout/assign-student-work/assign-
     MatCardModule,
     FormsModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

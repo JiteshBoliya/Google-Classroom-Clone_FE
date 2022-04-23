@@ -1,6 +1,8 @@
 .bod{
     align-items: center;
-    background-image: linear-gradient(white,rgb(3, 58, 120));
+    /* background-image: url('cool-background (2).png'); */
+    background-color: gray;
+    background-attachment: fixed;
     min-height: 100vh;
 }
 .jumbotron{
@@ -20,7 +22,7 @@
     list-style-type:none;
 }
 .list ul li{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     margin-bottom: 5px;
     padding: 10px;
     border-radius: 10px;
@@ -50,8 +52,24 @@
 .col-md-2{
     /* background-color: antiquewhite; */
     /* margin-left: 1px; */
-    border-left: 1px solid black;
+    /* border-left: 1px solid black; */
 }
 .col-md-2 h4{
     color: brown;
+}
+.assignment {
+    font-size: 10px;
+    width: 200px;
+    word-wrap:break-word;
+    background-color: rgb(227, 225, 225);
+    padding:10px;
+    border-radius: 20px;
+    color: black;
+}
+.assignment:hover{
+    box-shadow: 0px 0px 2px black;
+}
+.assignment.preview{
+    width: 100px;
+    background-color: aliceblue;
 }

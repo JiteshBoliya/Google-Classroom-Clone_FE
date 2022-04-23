@@ -28,8 +28,7 @@
             ],
             "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "/home/lcom/Desktop/jitesh/0_MyClass_project/MyClass/node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
-            ],
+              "src/styles.css"],
             "scripts": []
           },
           "configurations": {

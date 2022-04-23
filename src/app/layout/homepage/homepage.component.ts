@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthGuard } from 'src/app/shared/service/auth.guard';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/shared/service/auth.service';
+// import { join } from 'path';
 
 @Component({
   selector: 'app-homepage',
@@ -16,6 +17,8 @@ export class HomepageComponent implements OnInit {
   classes: any
   user!: any
   public classForm !: FormGroup;
+  public joinClassForm !: FormGroup;
+  joinclasses: any;
   constructor(private classsub: ClasssrvService, 
               private formBuilder: FormBuilder, 
               private router: Router,
@@ -31,6 +34,10 @@ export class HomepageComponent implements OnInit {
       subject: new FormControl("", Validators.required),
     })
 
+    this.joinClassForm = new FormGroup({
+      classcode: new FormControl("", Validators.required)
+    })
+
     if(this.auth.usersubject==null){
       this.auth.getUser(localStorage.getItem('userid')).subscribe(res=>{
         this.auth.updateUser(res)
@@ -41,21 +48,14 @@ export class HomepageComponent implements OnInit {
         this.user=res
       })
     }
-    
-    
-    // #Get userdetail
-    // this.auth.getUser(localStorage.getItem('userData'))
-    // .subscribe(res=>{
-    //   this.user=res
-    //   this.classsub.getClass(res)
-    //   .subscribe((data) => {
-    //     this.classes = data
-    //     // console.log("data",data);
-    //   })
-    // })
 
     this.classsub.getClass(localStorage.getItem('userid')).subscribe(res=>{
       this.classes=res
+    })
+
+    this.classsub.classlist(localStorage.getItem('userid')).subscribe(res=>{
+      this.joinclasses=res
+      console.log(res);
     })
 
     // #AuthGuard
@@ -70,10 +70,6 @@ export class HomepageComponent implements OnInit {
     // console.log(this.user);
     this.classsub.addClass({name:formData.get('name'),subject:formData.get('subject'),owner:this.user._id}).subscribe(
       res => {
-        // console.log(res);
-        
-        // this.classsub.class=res
-        // this.classsub.classchanged.next(this.classsub.class)
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -87,4 +83,37 @@ export class HomepageComponent implements OnInit {
     )
     // window.location.reload();
   } 
+  joinClass(){
+    // const formData = new FormData()
+    // formData.append('classcode', this.classForm.get('classcode')?.value)
+    // Get classid if exist
+    console.log(this.joinClassForm.get('classcode')?.value);
+    
+    this.classsub.CheckCode(this.joinClassForm.get('classcode')?.value).subscribe(
+      res => {
+        console.log("res:"+res);
+        if(res!==null){
+        this.classsub.joinClass({class:res,user:localStorage.getItem('userid')}).subscribe(res=>{
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Class Enrolled',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+        }
+        else{
+          Swal.fire({
+            position: 'center',
+            icon:'error',
+            title: 'Wrong code',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        this.joinClassForm.reset()
+      }
+    )
+  }
 }

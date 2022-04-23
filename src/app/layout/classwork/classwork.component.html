@@ -6,25 +6,31 @@
         + Create
       </button>
       <div class="list">
-          
-        <div class="element">
-            <mat-accordion>
+
+        <div class="element" *ngFor="let assign of assignments">
+            <mat-accordion >
               <mat-expansion-panel
                 (opened)="panelOpenState = true"
                 (closed)="panelOpenState = false"
               >
-                <mat-expansion-panel-header>
+                <mat-expansion-panel-header style=" box-shadow: 0px 0px 5px black;" >
                   <mat-panel-title>
-                    <img src="https://png.pngtree.com/png-vector/20190930/ourmid/pngtree-to-do-list-icon-cartoon-style-png-image_1768114.jpg" alt="" height="50px">  
-                    <b><i>Assignment </i></b> </mat-panel-title>
+                    <img src="https://openclipart.org/image/800px/215492" style="margin-right: 50px;" alt="" height="30px">  
+                    <b><i>{{assign.title}} </i></b> </mat-panel-title>
                   <mat-panel-description>
-                    Due date : 03/04/2022
+                    Due date : {{assign.duedate|date}}
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                 <hr />
                 <div class="as_body row">
                     <div class="col-md-8" >
-                        <p>some data</p>
+                        <p>{{assign.description}}</p>
+                        <div class="assignment" *ngFor="let files of assign.file" align="center">
+                          <a href="http://localhost:3000/{{files.path}}" target="_blank" >
+                          <img src="http://localhost:3000/{{files.path}}" height="50px" alt="{{assign.file[0].path}}">
+                            <h4>{{files.originalname}}</h4>
+                          </a>
+                          </div>
                     </div>
                     <div class="col-md-2"align="center">
                         <h1>0</h1><h4><b> Handed in</b></h4>
@@ -35,79 +41,12 @@
                 </div>
                 <hr />
                 <div class="as_foot">
-                  <a routerLink="/Instruction"><b>View assignment</b> </a>
+                  <a routerLink="/Instruction/{{assign._id}}"><b>View assignment</b> </a>
                 </div>
               </mat-expansion-panel>
             </mat-accordion>
           </div>
 
-        <div class="element">
-            <mat-accordion>
-              <mat-expansion-panel
-                (opened)="panelOpenState = true"
-                (closed)="panelOpenState = false"
-              >
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <img src="https://png.pngtree.com/png-vector/20190930/ourmid/pngtree-to-do-list-icon-cartoon-style-png-image_1768114.jpg" alt="" height="50px">  
-                    <b><i>Assignment </i></b> </mat-panel-title>
-                  <mat-panel-description>
-                    Due date : 03/04/2022
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <hr />
-                <div class="as_body row">
-                    <div class="col-md-8" >
-                        <p>some data</p>
-                    </div>
-                    <div class="col-md-2"align="center">
-                        <h1>0</h1><h4><b> Handed in</b></h4>
-                    </div>
-                    <div class="col-md-2" align="center">
-                        <h1>0</h1><h4><b>Assigned</b></h4>
-                    </div>
-                </div>
-                <hr />
-                <div class="as_foot">
-                  <a routerLink="/Instruction"><b>View assignment</b> </a>
-                </div>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </div>
-
-        <div class="element">
-            <mat-accordion>
-              <mat-expansion-panel
-                (opened)="panelOpenState = true"
-                (closed)="panelOpenState = false"
-              >
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <img src="https://png.pngtree.com/png-vector/20190930/ourmid/pngtree-to-do-list-icon-cartoon-style-png-image_1768114.jpg" alt="" height="50px">  
-                    <b><i>Assignment </i></b> </mat-panel-title>
-                  <mat-panel-description>
-                    Due date : 03/04/2022
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <hr />
-                <div class="as_body row">
-                    <div class="col-md-8" >
-                        <p>some data</p>
-                    </div>
-                    <div class="col-md-2"align="center">
-                        <h1>0</h1><h4><b> Handed in</b></h4>
-                    </div>
-                    <div class="col-md-2" align="center">
-                        <h1>0</h1><h4><b>Assigned</b></h4>
-                    </div>
-                </div>
-                <hr />
-                <div class="as_foot">
-                  <a routerLink="/Instruction"><b>View assignment</b> </a>
-                </div>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </div>
       </div>
     </div>
   </div>

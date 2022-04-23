@@ -25,5 +25,12 @@
   .nav-link{
     cursor: pointer;
   }
-
-    
+  .active {
+    font-weight: bold !important;
+    color: red !important;
+    font-size: 1.2rem !important;
+}
+.nav-item:hover{
+  background-color: rgb(20, 107, 184);
+  color: black !important;
+}

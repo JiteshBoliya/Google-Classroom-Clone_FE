@@ -36,7 +36,7 @@ export class StreamComponent implements OnInit {
     this.classId=this.activeRoute.snapshot.paramMap.get('id')
     this.streampost.getPost(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
       this.posts=res
-      console.log(res);
+      // console.log(res);
     }) 
     this.auth.usersubject.subscribe(res=>{
       this.user=res
@@ -60,7 +60,7 @@ export class StreamComponent implements OnInit {
   addPost() {
     const formData = new FormData()
     formData.append('text', this.postForm.get('text')?.value)
-    console.log(this.user);
+    // console.log(this.user);
     // this.posts.
     this.streampost.addpost({text:formData.get('text'),owner:this.user._id,classsub:this.classId}).subscribe(
       res => {

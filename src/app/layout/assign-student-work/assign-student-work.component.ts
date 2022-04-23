@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AssignsrvService } from 'src/app/shared/service/assignment.service';
 
 @Component({
   selector: 'app-assign-student-work',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./assign-student-work.component.css']
 })
 export class AssignStudentWorkComponent implements OnInit {
+  assignId: any;
+  assignment: Object;
 
-  constructor() { }
+  constructor(private assign:AssignsrvService) { }
 
   ngOnInit(): void {
+    this.assign.get_SpecificAssignment(this.assignId).subscribe(res=>{
+      this.assignment=res
+      console.log(res);
+  })
+  
   }
 
 }

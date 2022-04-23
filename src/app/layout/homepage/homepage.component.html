@@ -1,5 +1,6 @@
-<app-header></app-header>
-<div>
+
+<div class="fram" >
+    <app-header></app-header>
     <button class="todo"  
     data-toggle="tooltip" 
     data-placement="bottom" 
@@ -82,40 +83,71 @@
 
                 <div class="face face2">
                     <div class="content">
-                        <p>
-                            <input type="text" name="code" id="" class="form-control" placeholder="Class Code">
-                        </p>
+                        <form [formGroup]="joinClassForm" (ngSubmit)="joinClass()">
+                        
+                            <input 
+                                type="text" 
+                                name="classcode" 
+                                class="form-control" 
+                                placeholder="Class Code"
+                                formControlName="classcode">
+                                    <p *ngIf="!joinClassForm.controls['classcode'].valid && joinClassForm.controls['classcode'].touched" class="err"> 
+                                        <b>classcode is Required</b></p>
+                                    <br>
                         <br><i>Class code provided by Admin of class</i><br>
-                        <button class="btn btn-primary">Join</button>
+                        <button class="btn btn-primary" 
+                                type="submit"
+                                [hidden]="!joinClassForm.valid"
+                                >Join</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div id="class" class="jumbotron jbr">
-    <h1 style="color: black; font-family:monospace ;font-size: 40px; color: rgb(14, 14, 14);"   >Class</h1><hr>
-        <div class="row">
-
-        <a class="col-lg-2" routerLink="/stream/post/{{class._id}}" *ngFor="let class of classes" >
-            <div class="card">
-                <div class="card-body cust">
-                    <div class="imge">
-                        <p>{{class.name}}</p>
-                    </div>
-                    <div class="crdbody">
-                        <b>{{class.subject}}</b>
-                    </div>
-                    <div class="crdfoot">
-                        <hr><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
-                            <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
-                          </svg>
+        <!-- <h1 style="color: #f9f7f7; font-family:monospace ;font-size: 40px;"   >Class</h1><hr style="background-color: white;"> -->
+            <div class="row">
+    
+            <a class="col-lg-2" routerLink="/stream/post/{{class._id}}" *ngFor="let class of classes" >
+                <div class="card">
+                    <div class="card-body cust">
+                        <div class="imge">
+                            <p>{{class.name}}</p>
+                        </div>
+                        <div class="crdbody">
+                            <b>{{class.subject}}</b>
+                        </div>
+                        <div class="crdfoot">
+                            <hr><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
+                                <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
+                              </svg>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
-      </div>
-      <!-- <button class="btn bt-home" (click)="toHome()"><img src="https://img.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg?w=2000" alt="">
-      </button> -->
+            </a>
+
+
+            <a class="col-lg-2" routerLink="/stream/post/{{jclass._id}}" *ngFor="let jclass of joinclasses" >
+                <div class="card" *ngIf="jclass.class!==null">
+                    <div class="card-body cust">
+                        <div class="imge">
+                            <p>{{jclass.class.name}}</p>
+                        </div>
+                        <div class="crdbody">
+                            <b>{{jclass.class.subject}}</b>
+                        </div>
+                        <div class="crdfoot">
+                            <hr><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
+                                <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
+                              </svg>
+                        </div>
+                    </div>
+                </div>
+            </a>
+          </div>
+          <!-- <button class="btn bt-home" (click)="toHome()"><img src="https://img.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg?w=2000" alt="">
+          </button> -->
     </div>
 </div>
 <!-- 

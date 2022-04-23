@@ -1,5 +1,5 @@
 .bod{
-    align-items: center;
-    background-image: linear-gradient(white,rgb(3, 58, 120));
-    min-height: 100vh;
-}
+    /* background-image: url('cool-background (2).png'); */
+    background-color: gray;
+    background-attachment: fixed;
+    min-height: 100vh;}

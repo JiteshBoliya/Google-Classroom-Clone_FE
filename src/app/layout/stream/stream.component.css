@@ -1,6 +1,9 @@
 .nv{
-    background-color: rgb(3, 58, 120);
+    background-color:#025793;
     width:100%;
+    position:sticky;
+    z-index: 1;
+    top: 0px;
 }
 .active{
     background-color: white;

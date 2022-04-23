@@ -11,15 +11,21 @@
     <div class="container">
         
         <div class="jumbotron">
-            <h1>Assignment 1</h1>
-            <span>Creater name</span>💠️<i>02/02/22</i>
+            <h1>{{assignment[0].title}}</h1>
+            <span>{{assignment[0].owner.name}}</span>💠️<i>{{assignment[0].duedate|date}}</i>
             <h5>100 Points</h5>
             <hr>
             <div class="assign-body">   
-                <p>Description</p>
+                <p>{{assignment[0].description}}</p>
+                <div class="assignment" *ngFor="let files of assignment[0].file">
+                  <a href="http://localhost:3000/{{files.path}}" target="_blank" >
+                  <img src="http://localhost:3000/{{files.path}}" height="50px" alt="{{assignment[0].file[0].path}}">
+                    <h4>{{files.originalname}}</h4>
+                  </a>
+                  </div>
             </div>
             <hr>
-            Public comment
+            Privat comment
             <div class="footer1 col-md-12 row"
             style="padding-top:20px">
             <div class="col-md-1">

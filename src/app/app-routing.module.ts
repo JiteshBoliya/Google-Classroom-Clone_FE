@@ -20,9 +20,9 @@ const routes: Routes = [
 { path: 'classwork/:id', component: ClassworkComponent },
 { path: 'people/:id', component: PeopleComponent },
 { path: 'marks/:id', component: MarksComponent },
-{ path: 'assignment', component: AssignmentComponent },
-{ path: 'Instruction', component: AssignmentNavComponent },
-{ path: 'studentWork', component: AssignStudentWorkComponent }
+{ path: 'assignment/:id', component: AssignmentComponent },
+{ path: 'Instruction/:id', component: AssignmentNavComponent },
+{ path: 'studentWork/:id', component: AssignStudentWorkComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

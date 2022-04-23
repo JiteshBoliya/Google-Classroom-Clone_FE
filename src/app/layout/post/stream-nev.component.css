@@ -18,8 +18,13 @@
     padding: 20px;
     color:black;
     font-weight: 400;
+    /* height:fit-content; */
+    /* min-height: 100px; */
     background-color:white;    
     box-shadow: 0 0px 7px rgba(0, 0, 0, 0.5);
+}
+.body-text{
+    height:max-content;
 }
 .jumbo-class-code h4{
     color:maroon;
@@ -27,7 +32,7 @@
 }
 .in-post{
     border:0px;
-    height:30px;
+    height:3    0px;
     width: 100%;
 }.in-post:focus{
     border-bottom: 0px;
@@ -36,7 +41,7 @@
     border:1px black solid;
     height:40px;
     padding: 20px;
-    width: 100%;
+    width: 90%;
     border-radius:20px;
 }
 
@@ -44,14 +49,25 @@
     /* border:1px black solid; */
     height:40px;
     padding: 20px;
-    width: 90%;
-    border-radius:20px 0px 0px 20px;
+    width: 70%;
+    border-radius:20px;
 }
 .btn-ctr{
+    height:41px;
+    border-radius: 20px;
+}
+.btn-item{
     height:40px;
+    border-radius: 100px;
+    border: 0px;
+}
+.atch-btn{
+    height: inherit;
 }
 .bod{
-    background-image: linear-gradient(white,rgb(3, 58, 120));
+    background-image: url('cool-background (2).png');
+    /* background-color: gray; */
+    background-attachment: fixed;
     min-height: 100vh;
 }
 .p-body{
@@ -60,4 +76,7 @@
 }
 .body-text{
     word-break: break-all;
+}
+.comment-list ul li{
+    list-style-type: none;
 }

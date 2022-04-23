@@ -6,7 +6,6 @@ import { Class } from '../models/class.model';
 export class ClasssrvService {
   url="http://localhost:3000/class"
 
-
   // classsubject=new BehaviorSubject<String>(null);
   classchanged = new Subject<Class[]>();
   class:Class[] = [];
@@ -23,8 +22,15 @@ export class ClasssrvService {
     return this.http.post<any>(this.url,classs)}
 
   getClass(user:any):Observable<any>{
-    console.log();
-    console.log(`${this.url}/get/`+user);
-    
     return this.http.get(`${this.url}/get/`+user)}
+
+  CheckCode(code:any):Observable<any>{
+    return this.http.get(`${this.url}/code/join/`+code)
+  }
+  joinClass(data:any){
+    return this.http.post(`${this.url}/join`,data)
+  }
+  classlist(userid:any){
+    return this.http.get(`${this.url}/classlist/`+userid)
+  }
 }
