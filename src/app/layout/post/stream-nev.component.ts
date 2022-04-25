@@ -44,7 +44,6 @@ export class StreamNevComponent implements OnInit {
   // Get post by classid
   this.classId=this.activeRoute.snapshot.paramMap.get('id')
   this.streampost.getPost(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
-    // console.log("post:",res);
     this.posts=res
   }) 
 

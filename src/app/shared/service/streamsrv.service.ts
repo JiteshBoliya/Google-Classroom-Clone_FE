@@ -25,9 +25,8 @@ export class StreamsrvService {
   // #get comment
   getComment(postId:any){ return this.http.get(`${this.commentUrl}/get/`+postId)}
 
-  // #count comments
-  // countcomments(){return this.http.get}
-
+  // #get userlist of class
+  getUserlist(classId:any){ return this.http.get(`${this.classUrl}/userlist/`+classId)}
 
 
 

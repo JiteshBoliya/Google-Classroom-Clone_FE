@@ -1,0 +1,40 @@
+<mat-card class="todoDialog">
+    <mat-card-header>
+        <mat-card-title>Todo</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field appearance="fill">
+            <mat-label>Status</mat-label>
+            <mat-select>
+              <mat-option>Assign</mat-option>
+              <mat-option>Missing</mat-option>
+              <mat-option>Done</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Subject</mat-label>
+            <mat-select>
+              <mat-option>All</mat-option>
+              <mat-option>Subject 1</mat-option>
+              <mat-option>subject 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Duedate</mat-label>
+            <mat-select>
+              <mat-option>No-duedate</mat-option>
+              <mat-option>with-Duedate</mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+           <div class="todo-list">
+               <ul>
+                   <li *ngFor="let assign of assignments"> 
+                     <img src="https://openclipart.org/image/800px/215492" 
+                          style="margin-right: 50px;" 
+                          alt="" height="30px"><b>{{assign.title}}</b><i style="color:gray;float: right;">DueDate: {{assign.duedate|date}}</i></li>
+            </ul>
+           </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,16 @@
+.todoDialog{
+    width: 40vw;
+    /* background-color: black; */
+}
+.todo-list ul li{
+    list-style-type: none;
+    height: 50px;
+    width:100%;
+    display: block;
+    padding: 10px;
+    border-radius: 10px;
+}
+.todo-list ul li:hover{
+    box-shadow: 0px 0px 4px black;
+    
+}

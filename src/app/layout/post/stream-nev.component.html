@@ -3,7 +3,7 @@
   <div class="container">
     <div class="container-fluid cv">
       <div class="footer">
-        <h1>{{ this.classDetail?this.classDetail[0].name:'' }}</h1>
+        <h1>{{ this.classDetail?this.classDetail[0].name:this.classDetail[0].class?this.classDetail[0].class.name:'' }}</h1>
         <h5>{{ this.classDetail?this.classDetail[0].subject:'' }}</h5>
       </div>
     </div>
@@ -39,9 +39,10 @@
                 class="in-post"
                 formControlName="text"
               />
-              <button class="btn-item">
+              <button class="btn-item" (click)="fileInput.click()">
                 <img src="https://icon-library.com/images/attach-file-icon/attach-file-icon-4.jpg"class="atch-btn" alt="">
               </button>
+              <input hidden #fileInput formControlName="file" multiple name="file" type="file" id="file">
               <button
                 class="btn btn-ctr btn-primary"
                 type="submit"

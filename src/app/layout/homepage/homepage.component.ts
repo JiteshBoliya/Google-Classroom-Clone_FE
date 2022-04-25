@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { AuthGuard } from 'src/app/shared/service/auth.guard';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/shared/service/auth.service';
+import { DialogTodoComponent } from 'src/app/shared/dialogs/dialog-todo/dialog-todo.component';
+import { MatDialog } from '@angular/material/dialog';
 // import { join } from 'path';
 
 @Component({
@@ -23,7 +25,8 @@ export class HomepageComponent implements OnInit {
               private formBuilder: FormBuilder, 
               private router: Router,
               private auth: AuthService,
-              private authguard:AuthGuard) { 
+              private authguard:AuthGuard,
+              private dialog:MatDialog) { 
               }
 
   ngOnInit(): void {
@@ -50,12 +53,17 @@ export class HomepageComponent implements OnInit {
     }
 
     this.classsub.getClass(localStorage.getItem('userid')).subscribe(res=>{
+      console.log("created");
+      console.log(res);
+      
       this.classes=res
     })
 
     this.classsub.classlist(localStorage.getItem('userid')).subscribe(res=>{
       this.joinclasses=res
+      console.log("joined"+res);
       console.log(res);
+      
     })
 
     // #AuthGuard
@@ -115,5 +123,9 @@ export class HomepageComponent implements OnInit {
         this.joinClassForm.reset()
       }
     )
+  }
+
+  onTodo(){
+    this.dialog.open(DialogTodoComponent) 
   }
 }

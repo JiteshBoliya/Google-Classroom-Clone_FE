@@ -22,10 +22,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import{MatExpansionModule} from '@angular/material/expansion'
+import {MatExpansionModule} from '@angular/material/expansion'
 import { DialogAssignmentComponent } from './shared/dialogs/dialog-assignment/dialog-assignment.component';
 import { AssignmentNavComponent } from './layout/assign-instruction/assignment-inst.component';
 import { AssignStudentWorkComponent } from './layout/assign-student-work/assign-student-work.component';
+import { DialogTodoComponent } from './shared/dialogs/dialog-todo/dialog-todo.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { AssignStudentWorkComponent } from './layout/assign-student-work/assign-
     DialogAssignmentComponent,
     AssignmentNavComponent,
     AssignStudentWorkComponent,
+    DialogTodoComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ import { AssignStudentWorkComponent } from './layout/assign-student-work/assign-
     FormsModule,
     MatToolbarModule,
     MatExpansionModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSelectModule
   ],
   providers: [
     {

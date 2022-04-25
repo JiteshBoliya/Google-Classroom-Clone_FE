@@ -14,5 +14,7 @@ export class AssignsrvService {
   
   getAssignment(classId:any){ return this.http.get(`${this.url}/get/`+classId)}
 
+  getAllAssinment(){return this.http.get(`${this.url}/get`)}
+
   get_SpecificAssignment(assignId:any){return this.http.get(`${this.url}/getsp/`+assignId)}
 }

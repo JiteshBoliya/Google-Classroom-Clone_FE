@@ -9,8 +9,9 @@ import { AssignsrvService } from 'src/app/shared/service/assignment.service';
 })
 export class AssignmentNavComponent implements OnInit {
   assignment?: any;
-
-  constructor(private assign:AssignsrvService,private activeRoute:ActivatedRoute) { }
+  showFiller = false;
+  constructor(private assign:AssignsrvService,
+              private activeRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.assign.assignId=this.activeRoute.snapshot.paramMap.get('id')

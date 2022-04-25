@@ -24,7 +24,6 @@ export class ClassworkComponent implements OnInit {
     this.assign.getAssignment(this.classId).subscribe(res=>{
       this.assignments=res      
       console.log(res);
-      
     }) 
     
   }

@@ -1,7 +1,9 @@
 .bod{
     align-items: center;
     /* background-image: url('cool-background (2).png'); */
-    background-color: gray;
+    /* background-color: gray; */
+
+    background: linear-gradient(to top, #ffffff 0%, #013256 100%);
     background-attachment: fixed;
     min-height: 100vh;
 }

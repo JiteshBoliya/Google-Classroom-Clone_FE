@@ -1,7 +1,9 @@
 
 .bod{
     align-items: center;
-    background-image: linear-gradient(rgb(20, 127, 184),rgb(5, 34, 53));
+    /* background-image: linear-gradient(rgb(20, 127, 184),rgb(5, 34, 53)); */
+    background: linear-gradient(to top, #ffffff 0%, #013256 100%);
+    
     /* background-color: rgb(30, 68, 88); */
     color: white;
     min-height: 100vh;
@@ -44,4 +46,12 @@
     border: 0px;
     /* bottom: 95px; */
     /* right: 95px; */
+  }
+  .stud-list ul li{
+      list-style-type:none;
+      padding: 10px;
+  }
+  .stud-list ul li:hover{
+      background-color: azure;
+      color: black;
   }
