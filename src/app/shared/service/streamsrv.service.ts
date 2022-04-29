@@ -19,6 +19,9 @@ export class StreamsrvService {
   // #Get posts
   getClassDetail(classId:any){ return this.http.get(`${this.classUrl}/getclass/`+classId)}
   
+  // #Get creator of class
+  getClassCreator(classId:any){ return this.http.get(`${this.classUrl}/getUserid/`+classId)}
+
   // #Add comment
   addComment(comment:any){ return this.http.post(this.commentUrl,comment)}
 

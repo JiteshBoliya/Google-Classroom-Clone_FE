@@ -1,10 +1,10 @@
 <div class="nv">
+<app-sidebar></app-sidebar>
     <nav class="navbar nav justify-content-center">
-        <a class="nav-link" routerLink="/home"><img src="https://www.rspapad.com/images/Home-Icon2.png" alt="" height="30px"></a>
         <a class="nav-link" routerLinkActive="active" routerLink="/stream/post/{{classId}}">Stream</a>
         <a class="nav-link" routerLinkActive="active" routerLink="/classwork/{{classId}}">Classwork</a>
         <a class="nav-link" routerLinkActive="active" routerLink="/people/{{classId}}">People</a>
-        <a class="nav-link" routerLinkActive="active" routerLink="/marks/{{classId}}">Marks</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/marks/{{classId}}" *ngIf="creator[0]?.owner==currentUser">Marks</a>
     </nav>
 </div>
 <router-outlet></router-outlet>

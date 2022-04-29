@@ -17,12 +17,14 @@
     padding:10px;
     font-family: 'Courier New', Courier, monospace;
     
-    background-color: rgb(45, 129, 197);
-    color: white;
+    background-color: rgb(254, 254, 254);
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 2px 2px black;
     padding: 10px;
     font-size: 17px;
     font-weight: 900;
-    border-radius: 10px; 
+    border-radius: 10px;
+    
 }  
 .stud-list ul li:hover{
     background-color: rgb(8, 51, 86);

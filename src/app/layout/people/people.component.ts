@@ -18,7 +18,8 @@ export class PeopleComponent implements OnInit {
 
   this.streampost.getClassDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     console.log(res);
-    this.classDetail=res})
+    this.classDetail=res
+  })
 
   this.streampost.getUserlist(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     console.log(res);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSelectModule } from '@angular/material/select';
 import { AssignsrvService } from '../../service/assignment.service';
+import { ClasssrvService } from '../../service/classsrv.service';
 
 @Component({
   selector: 'app-dialog-todo',
@@ -9,13 +9,17 @@ import { AssignsrvService } from '../../service/assignment.service';
 })
 export class DialogTodoComponent implements OnInit {
   assignments: any;
+  joinclasses: any;
 
-  constructor(private assign:AssignsrvService) { }
+  constructor(private classsub: ClasssrvService,private assign:AssignsrvService) { }
 
   ngOnInit(): void {
     this.assign.getAllAssinment().subscribe(res=>{
       this.assignments=res      
-      console.log(res);
+      // console.log(res);
+    })
+    this.classsub.classlist(localStorage.getItem('userid')).subscribe(res=>{
+      this.joinclasses=res
     })
   }
 

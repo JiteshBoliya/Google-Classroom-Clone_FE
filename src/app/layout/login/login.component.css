@@ -1,17 +1,20 @@
 .page
 {
     margin: 0px;
-    background-color: rgb(227, 227, 227);
+    background-color: rgb(106, 106, 106);
     height: 100vh;
 }
 .g-card{
     position: relative;
     top: 20vh;
     width: 30vw;
-    height:fit-content;
     background-color: white;
     box-shadow: 0px 0px 1px black;
     padding: 30px;
+    min-width:500px;
+    background-image: url('../../../../Classroom2.0Logo.gif');
+    background-size: cover;
+    background-position: center;
 }
 .g-card h2{
     font-family:'Courier New', Courier, monospace;

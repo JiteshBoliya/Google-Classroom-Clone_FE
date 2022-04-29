@@ -36,7 +36,6 @@ export class DialogAssignmentComponent implements OnInit{
     })
     this.classId=this.assign.classId
     this.userid=localStorage.getItem('userid')
-
   }
   
   uploadFileEvt(imgFile: any) {
@@ -53,7 +52,7 @@ export class DialogAssignmentComponent implements OnInit{
     formData.append('file',this.image)
     formData.append('owner',this.userid)
     formData.append('classsub',this.classId)
-    console.log(this.image);
+    // console.log(this.image);
     
     this.assign.addAssignment(formData)
         .subscribe((res)=>{

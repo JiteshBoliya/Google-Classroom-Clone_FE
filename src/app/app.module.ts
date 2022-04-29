@@ -28,6 +28,12 @@ import { AssignmentNavComponent } from './layout/assign-instruction/assignment-i
 import { AssignStudentWorkComponent } from './layout/assign-student-work/assign-student-work.component';
 import { DialogTodoComponent } from './shared/dialogs/dialog-todo/dialog-todo.component';
 import { MatSelectModule } from '@angular/material/select';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { DialogSettingComponent } from './shared/dialogs/dialog-setting/dialog-setting.component';
+// import {MatSlideToggle} from'@angular/material/slide-toggle';
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { NgToggleModule } from 'ng-toggle-button';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -45,6 +51,8 @@ import { MatSelectModule } from '@angular/material/select';
     AssignmentNavComponent,
     AssignStudentWorkComponent,
     DialogTodoComponent,
+    SidebarComponent,
+    DialogSettingComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +69,11 @@ import { MatSelectModule } from '@angular/material/select';
     MatToolbarModule,
     MatExpansionModule,
     BrowserAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
+    // MatSlideToggle
+    RichTextEditorModule,
+    NgToggleModule,
+    NgxEditorModule
   ],
   providers: [
     {

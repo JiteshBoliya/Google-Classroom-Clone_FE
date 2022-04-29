@@ -1,0 +1,32 @@
+<!-- <div class="sidebar">
+    <a class="active" href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+   -->
+
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <br><br>
+    <a class="nav-link" routerLink="/home" >
+        <img src="https://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-home-icon.png" alt="" height="30px"><b style="margin-left:5px"> Home</b> </a>
+    <br><h3>Teaching</h3>
+    
+    <a routerLink="/stream/post/{{class._id}}" *ngFor="let class of classes">
+        <img src="https://www.pinclipart.com/picdir/big/365-3659818_a-relentless-focus-on-performance-with-a-passion.png" alt="" height="30px"> 
+        <b style="margin-left:5px"> {{class.name}}</b></a>
+    <br>
+    <h3>Enroll</h3>
+    
+    <a routerLink="/stream/post/{{jclass.class._id}}" *ngFor="let jclass of joinclasses">
+        <img src="https://www.pinclipart.com/picdir/big/365-3659818_a-relentless-focus-on-performance-with-a-passion.png" alt="" height="30px"> 
+        <b style="margin-left:5px"> {{jclass.class.name}}</b></a>
+</div>
+  
+  <!-- Use any element to open the sidenav -->
+  <button (click)="openNav()" class="btn btn-sidebar">
+      <!-- <img src="https://icons-for-free.com/download-icon-cercle+hamburger+list+mavigation+menu+stack+icon-1320196711549929265_512.png" class="manu-img"> -->
+        <!-- <span style="color:white">Manu</span> -->
+    </button>

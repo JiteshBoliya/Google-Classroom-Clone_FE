@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Editor } from 'ngx-editor';
+import { AssignsrvService } from 'src/app/shared/service/assignment.service';
 import { AuthGuard } from 'src/app/shared/service/auth.guard';
 import { AuthService } from 'src/app/shared/service/auth.service';
 import { ClasssrvService } from 'src/app/shared/service/classsrv.service';
@@ -12,7 +14,10 @@ import Swal from 'sweetalert2';
   templateUrl: './stream-nev.component.html',
   styleUrls: ['./stream-nev.component.css']
 })
-export class StreamNevComponent implements OnInit {
+export class StreamNevComponent implements OnInit,OnDestroy {
+
+  editor: Editor;
+  html: '';
   posts: any
   i:number
   comment:any
@@ -21,20 +26,38 @@ export class StreamNevComponent implements OnInit {
   postId:any
   classId:any
   classDetail:any
+  currentUser:any
+  text:any
+  stringToHTML:any
+  panelOpenState = false;
   public commentForm !: FormGroup;
   public postForm !: FormGroup;
+  creator: any;
+  assignments:any
   constructor(private streampost:StreamsrvService,
     private classsub: ClasssrvService, 
     private formBuilder: FormBuilder, 
     private router: Router,
     private auth: AuthService,
     private authguard:AuthGuard,
-    private activeRoute:ActivatedRoute) { }
+    private activeRoute:ActivatedRoute,
+    private assign:AssignsrvService,) { }
 
   ngOnInit(): void {
+
+    this.classId=this.activeRoute.snapshot.paramMap.get('id')
+    this.assign.classId=this.classId
+
+    this.assign.getAssignment(this.classId).subscribe(res=>{
+      this.assignments=res      
+      console.log(res);
+    }) 
+
+    this.editor = new Editor();
   
   // Get post form data
   this.postForm = new FormGroup({text: new FormControl("", Validators.required)})
+
 
   // Get comment form data
   this.commentForm = new FormGroup({
@@ -45,8 +68,10 @@ export class StreamNevComponent implements OnInit {
   this.classId=this.activeRoute.snapshot.paramMap.get('id')
   this.streampost.getPost(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.posts=res
-  }) 
 
+  }) 
+  
+  
     // Get comment by postid
     // this.postId=this.activeRoute.snapshot.paramMap.get('pid')
     // console.log(postId);
@@ -64,11 +89,21 @@ export class StreamNevComponent implements OnInit {
     this.auth.getUser(localStorage.getItem('userid')).subscribe(res=>{this.auth.updateUser(res)})
   }
 
+  // #Get userid permission to user
+  this.currentUser=localStorage.getItem('userid')
+  this.streampost.getClassCreator(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+    this.creator=res
+  })
+    
+  
   // Get Class Details
   this.streampost.getClassDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{this.classDetail=res})
 
   // Authguard
   if (this.authguard.canActivate() == false) this.router.navigate(['/login'])
+}
+ngOnDestroy(): void {
+  this.editor.destroy();  
 }
 
 // #Add post
@@ -87,6 +122,8 @@ addPost() {
       this.postForm.reset()
     }
   )
+  console.log(this.text);
+  
 }
 
 // #Add Comment
@@ -109,5 +146,6 @@ addComment(id:any){
     }
   )
 }
+
 }
  

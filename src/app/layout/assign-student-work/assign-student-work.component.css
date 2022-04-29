@@ -55,3 +55,14 @@
       background-color: azure;
       color: black;
   }
+.container-data{
+    /* align-items: center; */
+    /* align-self: center; */
+    /* align-content:center; */
+}
+.card-status{
+    width: 50%;
+    align-self: center;
+    text-align: center;
+    padding-top: 20px;
+}

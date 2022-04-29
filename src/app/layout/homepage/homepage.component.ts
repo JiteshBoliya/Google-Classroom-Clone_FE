@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { GoogleGapiService } from '../../shared/service/google-gapi.service';
 import { ClasssrvService } from '../../shared/service/classsrv.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthGuard } from 'src/app/shared/service/auth.guard';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/shared/service/auth.service';
 import { DialogTodoComponent } from 'src/app/shared/dialogs/dialog-todo/dialog-todo.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogSettingComponent } from 'src/app/shared/dialogs/dialog-setting/dialog-setting.component';
+import { StreamsrvService } from 'src/app/shared/service/streamsrv.service';
 // import { join } from 'path';
 
 @Component({
@@ -21,12 +23,16 @@ export class HomepageComponent implements OnInit {
   public classForm !: FormGroup;
   public joinClassForm !: FormGroup;
   joinclasses: any;
+  currentUser: string;
+  creator: any;
   constructor(private classsub: ClasssrvService, 
-              private formBuilder: FormBuilder, 
+              private formBuilder: FormBuilder,
+              private streampost:StreamsrvService, 
               private router: Router,
               private auth: AuthService,
               private authguard:AuthGuard,
-              private dialog:MatDialog) { 
+              private dialog:MatDialog,
+              private activeRoute:ActivatedRoute) { 
               }
 
   ngOnInit(): void {
@@ -53,19 +59,13 @@ export class HomepageComponent implements OnInit {
     }
 
     this.classsub.getClass(localStorage.getItem('userid')).subscribe(res=>{
-      console.log("created");
-      console.log(res);
-      
       this.classes=res
     })
 
     this.classsub.classlist(localStorage.getItem('userid')).subscribe(res=>{
       this.joinclasses=res
-      console.log("joined"+res);
-      console.log(res);
-      
+      1
     })
-
     // #AuthGuard
     if (this.authguard.canActivate() == false) this.router.navigate(['/login'])
   }
@@ -127,5 +127,8 @@ export class HomepageComponent implements OnInit {
 
   onTodo(){
     this.dialog.open(DialogTodoComponent) 
+  }
+  onsetting(){
+    this.dialog.open(DialogSettingComponent) 
   }
 }

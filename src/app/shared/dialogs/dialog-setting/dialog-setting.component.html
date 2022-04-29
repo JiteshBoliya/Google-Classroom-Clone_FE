@@ -1,0 +1,50 @@
+<mat-card class="todoDialog">
+  <mat-card-header>
+    <mat-card-title>Setting</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <hr />
+
+    <div class="jumbotron">
+      <select name="" id="" class="form-control" style="width: 200px;float: right;">
+        <option value="">Class 1</option>
+        <option value="">Class 2</option>
+        <option value="">Class 3</option>
+      </select>
+      <h2>Comment</h2>
+      <hr />
+      <div class="row">
+        <div class="col-md-10">Comment on your posts</div>
+        <div>
+          <!-- <mat-slide-toggle [(ngModel)]="modal" (change)="ngOnInit()" color="primary">
+                        Label
+                    </mat-slide-toggle> -->
+          <ng-toggle [value]="true" [color]="{unchecked: '#939da2',checked: '#f62d51'}" [height]="15" [width]="30"></ng-toggle>
+        </div>
+        <div class="col-md-10">private comment on work</div>
+        <div>
+            <ng-toggle [value]="true" [color]="{unchecked: '#939da2',checked: '#f62d51'}" [height]="15" [width]="30"></ng-toggle>
+        </div>
+      </div>
+      <br /><br />
+      <h2>Class enroll</h2>
+      <hr />
+      <div class="row">
+        <div class="col-md-10">Invitations to join classes as a student</div>
+        <div>
+            <ng-toggle [value]="true" [color]="{unchecked: '#939da2',checked: '#f62d51'}" [height]="15" [width]="30"></ng-toggle>
+        </div>
+
+        <div class="col-md-10">posts from users</div>
+        <div>
+            <ng-toggle [value]="true" [color]="{unchecked: '#939da2',checked: '#f62d51'}" [height]="15" [width]="30"></ng-toggle>
+        </div>
+
+        <div class="col-md-10">late submission</div>
+        <div>
+            <ng-toggle [value]="true" [color]="{unchecked: '#939da2',checked: '#f62d51'}" [height]="15" [width]="30"></ng-toggle>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

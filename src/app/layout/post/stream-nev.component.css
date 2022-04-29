@@ -1,6 +1,7 @@
 
 .cv{
-    background-image: url('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg');
+    background-image: url('https://images.unsplash.com/photo-1444080748397-f442aa95c3e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80');
+    background-size: cover;
     margin:5px;
     /* padding: 10px; */
     min-height: 20vh;
@@ -54,12 +55,14 @@
 }
 .btn-ctr{
     height:41px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
+    float: right;
 }
 .btn-item{
     height:40px;
-    border-radius: 100px;
-    border: 0px;
+    /* border-radius: 100px; */
+    /* border: 0px; */
+    background-color: #b5b5b5;
 }
 .atch-btn{
     height: inherit;
@@ -86,3 +89,10 @@
 .comment-list ul li{
     list-style-type: none;
 }
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  .NgxEditor__Wrapper{
+      min-height: 300px;
+  }

@@ -10,6 +10,7 @@ import { AssignsrvService } from 'src/app/shared/service/assignment.service';
 export class AssignmentComponent implements OnInit {
   assignId:any
   assignment:any
+  statusAssign:any
   constructor(private assign:AssignsrvService) { }
 
   ngOnInit(): void {

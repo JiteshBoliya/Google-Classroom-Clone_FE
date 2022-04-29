@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { ActivatedRoute } from '@angular/router';
 import { DialogAssignmentComponent } from 'src/app/shared/dialogs/dialog-assignment/dialog-assignment.component';
 import { AssignsrvService } from 'src/app/shared/service/assignment.service';
+import { StreamsrvService } from 'src/app/shared/service/streamsrv.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-classwork',
@@ -14,7 +15,12 @@ export class ClassworkComponent implements OnInit {
   panelOpenState = false;
   classId: any;
   assignments:any
-  constructor(private dialog:MatDialog,private activeRoute:ActivatedRoute,private assign:AssignsrvService) { }
+  currentUser: any;
+  creator: any;
+  constructor(private dialog:MatDialog,
+              private activeRoute:ActivatedRoute,
+              private assign:AssignsrvService,
+              private streampost:StreamsrvService) { }
 
   ngOnInit(): void {
 
@@ -26,6 +32,11 @@ export class ClassworkComponent implements OnInit {
       console.log(res);
     }) 
     
+  // #Get userid permission to user
+  this.currentUser=localStorage.getItem('userid')
+  this.streampost.getClassCreator(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+    this.creator=res
+  })
   }
   onSubmit(){
     this.dialog.open(DialogAssignmentComponent) 

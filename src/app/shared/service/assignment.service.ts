@@ -17,4 +17,12 @@ export class AssignsrvService {
   getAllAssinment(){return this.http.get(`${this.url}/get`)}
 
   get_SpecificAssignment(assignId:any){return this.http.get(`${this.url}/getsp/`+assignId)}
+
+  get_classDetail(assignId:any){return this.http.get(`${this.url}/getStatus/`+assignId)}
+
+  get_countStatus(status:any,assignId:any):Observable<any>{return this.http.get(`${this.url}/count/status/`+status+`/`+assignId)}
+
+  addUserAssignment(assign:any){return this.http.post<any>(`${this.url}/userAssignment`,assign)}
+
+  getUserAssignment(AssignId:any){return this.http.get(`${this.url}/userAssignment/get`,AssignId)}
 }

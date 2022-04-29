@@ -11,6 +11,6 @@
     border-radius: 10px;
 }
 .todo-list ul li:hover{
-    box-shadow: 0px 0px 4px black;
+    box-shadow: 0px 0px 4px rgb(0, 0, 0);
     
 }

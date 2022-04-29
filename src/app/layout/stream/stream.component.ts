@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators,Form } from '@angular/forms';
 import { Params, Router ,ActivatedRoute} from '@angular/router';
 import { AuthGuard } from 'src/app/shared/service/auth.guard';
@@ -6,7 +6,6 @@ import { AuthService } from 'src/app/shared/service/auth.service';
 import { ClasssrvService } from 'src/app/shared/service/classsrv.service';
 import Swal from 'sweetalert2';
 import {StreamsrvService} from '../../shared/service/streamsrv.service'
-
 @Component({
   selector: 'app-stream',
   templateUrl: './stream.component.html',
@@ -19,6 +18,10 @@ export class StreamComponent implements OnInit {
   classId:any
   classDetail:any
   public postForm !: FormGroup;
+  currentUser: any;
+  creator: any;
+
+
   constructor(private streampost:StreamsrvService,
     private classsub: ClasssrvService, 
     private formBuilder: FormBuilder, 
@@ -27,6 +30,7 @@ export class StreamComponent implements OnInit {
     private authguard:AuthGuard,
     private activeRoute:ActivatedRoute
     ) {}
+  
   ngOnInit(): void {
     // #Get and Validate Rectiveform data
     this.postForm = new FormGroup({
@@ -41,6 +45,12 @@ export class StreamComponent implements OnInit {
     this.auth.usersubject.subscribe(res=>{
       this.user=res
     })
+
+    // #Get userid permission to user
+  this.currentUser=localStorage.getItem('userid')
+  this.streampost.getClassCreator(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+    this.creator=res
+  })
 
     if(this.uname==null){
       this.auth.getUser(localStorage.getItem('userid')).subscribe(res=>{
