@@ -1,4 +1,15 @@
 <div class="bod ">
     <app-stream></app-stream>
-<p>marks works!</p>
+    <div >
+    <table class="table table-dark table-body">
+        <th></th>
+        <th *ngFor="let assign of assignments" style="color: black;">
+            {{assign.title}}
+        </th>
+        <tr  *ngFor="let user of userDetail;let j=index" >
+            <td>{{user.user.name}}</td>
+            <td *ngFor="let assign of assignments;let i=index"><a>/{{assign.points}}</a></td>
+        </tr>
+      </table>
+    </div>
 </div>

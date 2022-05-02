@@ -68,7 +68,6 @@ export class StreamNevComponent implements OnInit,OnDestroy {
   this.classId=this.activeRoute.snapshot.paramMap.get('id')
   this.streampost.getPost(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.posts=res
-
   }) 
   
   

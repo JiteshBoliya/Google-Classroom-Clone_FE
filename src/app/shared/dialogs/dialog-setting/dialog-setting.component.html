@@ -6,6 +6,12 @@
     <hr />
 
     <div class="jumbotron">
+      <h2>Profile</h2>
+      <hr>
+      <b>Add profile:</b>
+      <button style="float: right;"  type="button" mat-raised-button (click)="fileInput.click()">  Choose File</button>
+      <input hidden (change)="uploadFileEvt($event)" #fileInput formControlName="file" multiple name="file" type="file" id="file"><i>{{text}}</i>
+      <br><br><br>
       <select name="" id="" class="form-control" style="width: 200px;float: right;">
         <option value="">Class 1</option>
         <option value="">Class 2</option>

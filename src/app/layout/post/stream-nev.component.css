@@ -82,6 +82,7 @@
 .p-body{
     height:fit-content;
     min-height: 100px;
+    /* background-color: #e3f1fb; */
 }
 .body-text{
     word-break: break-all;

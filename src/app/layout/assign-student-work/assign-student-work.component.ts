@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { getIndex } from '@syncfusion/ej2-angular-richtexteditor';
+import { DialogUserProfiileComponent } from 'src/app/shared/dialogs/dialog-user-profiile/dialog-user-profiile.component';
 import { AssignsrvService } from 'src/app/shared/service/assignment.service';
 import { StreamsrvService } from 'src/app/shared/service/streamsrv.service';
 
@@ -21,18 +23,24 @@ export class AssignStudentWorkComponent implements OnInit {
   selectStatus:any
   data:any
 
-  constructor(private assign:AssignsrvService,
+  constructor(private dialog:MatDialog,
+              private assign:AssignsrvService,
               private streampost:StreamsrvService,
               private activeRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.statAssign=0
+    // this.statAssign=0
+    this.assign.assignId=this.activeRoute.snapshot.paramMap.get('id')
+
     this.assign.get_classDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.userlist=res
   })
 
   this.assign.get_countStatus('Assigned',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
       this.statAssign=res.data
+  })
+  this.assign.get_countStatus('missing',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+    this.statAssign=+res.data
   })
   this.assign.get_countStatus('handed In',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.statHandedIn=res.data
@@ -42,7 +50,11 @@ export class AssignStudentWorkComponent implements OnInit {
   })
   }
   onSelect(option:any){
-    this.selectStatus=option.value
+    this.selectStatus=option.value  
   }
-
+  onSubmit(userid:any){
+    this.assign.userId=userid
+    this.dialog.open(DialogUserProfiileComponent) 
+  }
 }
+

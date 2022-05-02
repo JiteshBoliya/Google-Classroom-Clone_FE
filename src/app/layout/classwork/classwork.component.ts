@@ -17,6 +17,8 @@ export class ClassworkComponent implements OnInit {
   assignments:any
   currentUser: any;
   creator: any;
+  statAssign: number;
+  statHandedIn: number;
   constructor(private dialog:MatDialog,
               private activeRoute:ActivatedRoute,
               private assign:AssignsrvService,
@@ -29,7 +31,18 @@ export class ClassworkComponent implements OnInit {
 
     this.assign.getAssignment(this.classId).subscribe(res=>{
       this.assignments=res      
-      console.log(res);
+    
+      
+      // this.assign.get_countStatus('missing',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+      //   this.statAssign=+res.data
+      // })
+      // this.assign.get_countStatus('handed In',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+      //   this.statHandedIn=res.data
+      // })
+      // this.assign.get_countStatus('Done late',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+      //   this.statHandedIn=+res.data
+      // })
+
     }) 
     
   // #Get userid permission to user
@@ -41,4 +54,9 @@ export class ClassworkComponent implements OnInit {
   onSubmit(){
     this.dialog.open(DialogAssignmentComponent) 
   }
+  // getstatHandedIn(id:any){
+  //     this.assign.get_countStatus('Assigned',id).subscribe(res=>{
+  //         console.log("hey"+res.data);
+  //     })
+  // }
 }

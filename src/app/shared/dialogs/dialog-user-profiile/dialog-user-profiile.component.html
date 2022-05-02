@@ -1,0 +1,27 @@
+<mat-card class="todoDialog">
+    <mat-card-header>
+        <mat-card-title>{{userDetail[0].owner.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <hr />
+        <div class="jumbotron">
+            <h3>{{userDetail[0].assignment.title}}</h3>
+            <b style="position:absolute;right: 30px;top:130px;color: blue;">{{userDetail[0].status}}</b>
+            <hr>
+            <ul>
+                <li> <a href="http://localhost:3000/{{userDetail[0].file[0].path}}" target="_blank">{{userDetail[0].file[0].originalname}}</a></li>
+            </ul>
+
+            <hr>
+            <b>Marks:</b><br>
+            <div class="input-group mb-3">
+                <input type="number" name="marks" id="" value="{{userDetail[0].marks}}" placeholder="Marks"
+                    class="form-control" style="background-color: transparent;">
+                <div class="input-group-append">
+                    <button class="btn btn-primary">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -34,6 +34,8 @@ import { DialogSettingComponent } from './shared/dialogs/dialog-setting/dialog-s
 import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { NgToggleModule } from 'ng-toggle-button';
 import { NgxEditorModule } from 'ngx-editor';
+import { DialogUserProfiileComponent } from './shared/dialogs/dialog-user-profiile/dialog-user-profiile.component';
+import { DialogEmailComponent } from './shared/dialogs/dialog-email/dialog-email.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { NgxEditorModule } from 'ngx-editor';
     DialogTodoComponent,
     SidebarComponent,
     DialogSettingComponent,
+    DialogUserProfiileComponent,
+    DialogEmailComponent,
   ],
   imports: [
     BrowserModule,

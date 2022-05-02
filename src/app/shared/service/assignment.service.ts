@@ -8,6 +8,7 @@ export class AssignsrvService {
   url="http://localhost:3000/assignment"
   public classId:any
   public assignId:any
+  public userId:any
   constructor(private http: HttpClient) {}
   
   addAssignment(assign:any ):Observable<any>{ return this.http.post<any>(this.url,assign)}
@@ -25,4 +26,9 @@ export class AssignsrvService {
   addUserAssignment(assign:any){return this.http.post<any>(`${this.url}/userAssignment`,assign)}
 
   getUserAssignment(AssignId:any){return this.http.get(`${this.url}/userAssignment/get`,AssignId)}
+
+  getAllUserAssignment(classId:any){return this.http.get(`${this.url}/userAssignment/get/all/`+classId)}
+ 
+  getuserAssignmentDetail(AssignId:any,userId:any){ return this.http.get(`${this.url}/userAssignment/get/`+AssignId+`/`+userId)}
+
 }

@@ -56,6 +56,7 @@ export class DialogAssignmentComponent implements OnInit{
     
     this.assign.addAssignment(formData)
         .subscribe((res)=>{
+          console.log(res)
       Swal.fire({
         position: 'center',
         icon: 'success',

@@ -1,0 +1,17 @@
+.marks-input{
+    border: 0px;
+    box-sizing: 0px;
+    background-color: transparent;
+    padding: 5px;
+    width: 200px;
+    float: left;
+}
+.jumbotron{
+    min-width: 400px;
+}
+.btn{
+    /* position:absolute;
+    bottom: 20px;
+    width: 80%; */
+    float: right;
+}

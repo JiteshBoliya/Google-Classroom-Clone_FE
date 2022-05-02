@@ -17,7 +17,7 @@
             </ul>
         </div> -->
         <div >
-            <div class="row"  style="height: 100px;" >
+            <div class="row card-counter"  style="height: 100px;" >
                 <div class="card-status">
                     <h1>{{statAssign}}</h1>
                     <h2>Assign</h2>
@@ -35,8 +35,8 @@
                 <option value="missing">Missing</option>
                 <option value="Done late">Done late</option>
                 <option value="marked">Marked</option>
-            </select><br>
-            <div  style="color: black; margin-top: 10px;display:flex;float: left; margin-left: 5px;" *ngFor="let user of userlist">
+            </select><br><a (click)="onSubmit(user.owner._id)" style="cursor: pointer;" *ngFor="let user of userlist">
+            <div  style="color: black; margin-top: 10px;display:flex;float: left; margin-left: 5px;" >
                 <div *ngIf="selectStatus==user.status||!selectStatus"  class="card" style="padding: 10px;width:200px">
                     <h3>{{user.owner.name}}</h3>
                     <span *ngIf="user.status=='Assigned'" style="color: green;">{{user.status}}</span>
@@ -46,7 +46,7 @@
                     <span *ngIf="user.status=='Done late'" style="color: rgb(35, 122, 244);">{{user.status}}</span>
                 </div>
             </div>
-
+            </a>
         </div>
         
     </div>

@@ -4,4 +4,10 @@
 
     background: linear-gradient(to top, #ffffff 0%, #013256 100%);
     background-attachment: fixed;
-    min-height: 100vh;}
+    min-height: 100vh;
+    min-width: 100vw;
+    width: fit-content;
+}
+.table-body{
+    padding: 10px 10px 10px 10px;
+}

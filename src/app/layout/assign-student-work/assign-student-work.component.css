@@ -64,5 +64,15 @@
     width: 50%;
     align-self: center;
     text-align: center;
-    padding-top: 20px;
+    padding: 5px;
+    background-color:white;
+    color: black;
+    /* border-radius: 100px; */
+ 
 }
+/* .card-counter{
+    background-color: aliceblue;
+    color: black;
+    border-radius: 20px;
+    /* opacity: 0.9;
+} */
