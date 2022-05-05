@@ -2,7 +2,8 @@
     align-items: center;
     /* background-image: url('cool-background (2).png'); */
     /* background-color: gray; */
-    background: linear-gradient(to top, #ffffff 0%, #013256 100%);
+    /* background: linear-gradient(to top, #ffffff 0%, #013256 100%); */
+    background-color: gray;
     background-attachment: fixed;
     min-height: 100vh;
 }
@@ -20,16 +21,16 @@
     background-color: rgb(254, 254, 254);
     color: rgb(0, 0, 0);
     box-shadow: 0px 0px 1px black;
-    padding: 10px;
+    /* padding: 10px; */
     font-size: 17px;
     font-weight: 900;
     border-radius: 10px;
     
 }  
 .stud-list ul li:hover{
-    background-color: rgb(8, 51, 86);
+    background-color: rgb(181, 181, 181);
     color: white;
-    padding: 10px;
+    /* padding: 10px; */
     font-size: 17px;
     font-weight: 900;
     border-radius: 10px;
@@ -46,15 +47,27 @@ hr{
 .opration{
     opacity: 0;
     float:right;
-    color: white;
+    /* color: white; */
     cursor: pointer;
 }
 .opration a:hover{
     background-color: white;
     color: black;
-    padding: 2px;
-    border-radius: 5px;
+    /* padding: 2px; */
+    /* border-radius: 5px; */
 }
 .data:hover .opration{
     opacity: 1;
+}
+.usermail{
+    background-image: url('https://www.pngall.com/wp-content/uploads/12/Gmail-Vector-PNG-Photos.png');
+    height: 100%;
+    width: 20px;
+}
+.imgbtn{
+    margin-left: 10px;
+}
+.imgbtn:hover{
+    /* background-color: white; */
+    background-color: white;
 }

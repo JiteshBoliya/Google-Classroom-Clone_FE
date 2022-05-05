@@ -2,7 +2,8 @@
 .bod{
     align-items: center;
     /* background-image: linear-gradient(rgb(20, 127, 184),rgb(5, 34, 53)); */
-    background: linear-gradient(to top, #ffffff 0%, #013256 100%);
+    /* background: linear-gradient(to top, #ffffff 0%, #013256 100%); */
+    background-color: gray;
     
     /* background-color: #29465b; */
     color: white;
@@ -16,6 +17,7 @@
     background-color: white;
     padding: 50px;
     color: black;
+    height:fit-content;
     border-radius: 10px;
     box-shadow: 0px 1px 3px black;
 
@@ -122,6 +124,5 @@
   }
 .submit-assign{
     min-width: 300px;
-
     margin-top: 2px;
 }

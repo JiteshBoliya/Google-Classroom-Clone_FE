@@ -14,25 +14,25 @@ import Swal from 'sweetalert2';
 export class ClassworkComponent implements OnInit {
   panelOpenState = false;
   classId: any;
-  assignments:any
+  assignments: any
   currentUser: any;
   creator: any;
   statAssign: number;
   statHandedIn: number;
-  constructor(private dialog:MatDialog,
-              private activeRoute:ActivatedRoute,
-              private assign:AssignsrvService,
-              private streampost:StreamsrvService) { }
+  constructor(private dialog: MatDialog,
+    private activeRoute: ActivatedRoute,
+    private assign: AssignsrvService,
+    private streampost: StreamsrvService) { }
 
   ngOnInit(): void {
 
-    this.classId=this.activeRoute.snapshot.paramMap.get('id')
-    this.assign.classId=this.classId
+    this.classId = this.activeRoute.snapshot.paramMap.get('id')
+    this.assign.classId = this.classId
 
-    this.assign.getAssignment(this.classId).subscribe(res=>{
-      this.assignments=res      
-    
-      
+    this.assign.getAssignment(this.classId).subscribe(res => {
+      this.assignments = res
+
+
       // this.assign.get_countStatus('missing',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
       //   this.statAssign=+res.data
       // })
@@ -43,16 +43,17 @@ export class ClassworkComponent implements OnInit {
       //   this.statHandedIn=+res.data
       // })
 
-    }) 
-    
-  // #Get userid permission to user
-  this.currentUser=localStorage.getItem('userid')
-  this.streampost.getClassCreator(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
-    this.creator=res
-  })
+    })
+
+    // #Get userid permission to user
+    this.currentUser = localStorage.getItem('userid')
+    this.streampost.getClassCreator(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res => {
+      this.creator = res
+      this.creator = Object.assign({}, ...this.creator)
+    })
   }
-  onSubmit(){
-    this.dialog.open(DialogAssignmentComponent) 
+  onSubmit() {
+    this.dialog.open(DialogAssignmentComponent)
   }
   // getstatHandedIn(id:any){
   //     this.assign.get_countStatus('Assigned',id).subscribe(res=>{

@@ -6,7 +6,9 @@
 }
 .g-card{
     position: relative;
-    top: 20vh;
+    top: 20%;
+    /* left: ; */
+
     width: 30vw;
     background-color: white;
     box-shadow: 0px 0px 1px black;

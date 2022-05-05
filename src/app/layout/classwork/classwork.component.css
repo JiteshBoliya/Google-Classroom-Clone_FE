@@ -3,7 +3,8 @@
     /* background-image: url('cool-background (2).png'); */
     /* background-color: gray; */
 
-    background: linear-gradient(to top, #ffffff 0%, #013256 100%);
+    /* background: linear-gradient(to top, #ffffff 0%, #013256 100%); */
+    background-color: gray;
     background-attachment: fixed;
     min-height: 100vh;
 }
@@ -14,7 +15,10 @@
     border-radius: 20px;
     /* top: 5px; */
     position: relative;
-    box-shadow: 0px 0px 5px gray;
+    background-color: white;
+    color: black;
+    border: 0px;
+    /* box-shadow: 0px 0px 5px gray; */
 }
 .list{
     padding: 1px;

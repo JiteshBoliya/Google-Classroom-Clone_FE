@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DialogSettingComponent } from '../dialogs/dialog-setting/dialog-setting.component';
+import { DialogTodoComponent } from '../dialogs/dialog-todo/dialog-todo.component';
 import { ClasssrvService } from '../service/classsrv.service';
 
 @Component({
@@ -12,7 +15,8 @@ export class SidebarComponent implements OnInit {
   joinclasses: any;
 
   constructor(private classsub: ClasssrvService, 
-              private router: Router) { }
+              private router: Router,
+              private dialog:MatDialog) { }
 
   ngOnInit(): void {
 
@@ -28,17 +32,20 @@ export class SidebarComponent implements OnInit {
 
 
   openNav() {
-
-    console.log("hey");
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
   }
   
   /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
   closeNav() {
-    
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
+  }
+  onTodo(){
+    this.dialog.open(DialogTodoComponent) 
+  }
+  onsetting(){
+    this.dialog.open(DialogSettingComponent) 
   }
 
 }

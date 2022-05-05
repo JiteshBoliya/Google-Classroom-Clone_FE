@@ -2,7 +2,8 @@
 .bod{
     align-items: center;
     /* background-image: linear-gradient(rgb(20, 127, 184),rgb(5, 34, 53)); */
-    background: linear-gradient(to top, #ffffff 0%, #013256 100%);
+    /* background: linear-gradient(to top, #ffffff 0%, #013256 100%); */
+    background-color: gray;
     
     /* background-color: rgb(30, 68, 88); */
     color: white;
@@ -66,6 +67,7 @@
     text-align: center;
     padding: 5px;
     background-color:white;
+    box-shadow: 0px 1px 5px black;
     color: black;
     /* border-radius: 100px; */
  
@@ -76,3 +78,27 @@
     border-radius: 20px;
     /* opacity: 0.9;
 } */
+.jumbotron{
+    padding: 0px;
+    position: relative;
+    border-radius: 10px;
+}
+.PRC-header{
+    /* position: relative; */
+    background-color: white;
+    color: black;
+    height: 30px;
+    padding: 10px;
+    border-radius: 10px 10px 0px 0px;
+}
+.PRC-body{
+    padding: 10px;
+}
+.PRC-footer{
+    position:absolute;
+    bottom:0px;
+    background-color: rgb(248, 248, 248);
+    border-radius: 10px;
+    width: 100%;
+    height: 50px;
+}

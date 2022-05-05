@@ -2,52 +2,75 @@
 
     <app-assignment></app-assignment>
     <div class="container container-data">
-
-
-        <!-- <div class="col-md-2 stud-list">
-            <select name="" id="" class="form-control">
-                <option value="">Sort by Status</option>
-                <option value="">Sort by Name</option>
-                <option value="">Sort by email</option>
-            </select><br><br>
-            <ul>
-                <li> Student 1</li>
-                <li> Student 2</li>
-                <li> Student 3</li>
-            </ul>
-        </div> -->
-        <div >
-            <div class="row card-counter"  style="height: 100px;" >
+        <div>
+            <div class="row card-counter" style="height: 100px; margin-top: 10px;">
                 <div class="card-status">
                     <h1>{{statAssign}}</h1>
                     <h2>Assign</h2>
                 </div>
-                <div class="card-status" >
+                <div class="card-status">
                     <h1>{{statHandedIn}}</h1>
                     <h2>Handed In</h2>
                 </div>
             </div>
             <hr style="background-color: white;">
-            <select name="" id="" class="form-control" style="width: 30%;" (change)="onSelect($event.target)">
-                <option value="">All</option>
-                <option value="Assigned">Assigned</option>
-                <option value="handed In">Hand In</option>
-                <option value="missing">Missing</option>
-                <option value="Done late">Done late</option>
-                <option value="marked">Marked</option>
-            </select><br><a (click)="onSubmit(user.owner._id)" style="cursor: pointer;" *ngFor="let user of userlist">
-            <div  style="color: black; margin-top: 10px;display:flex;float: left; margin-left: 5px;" >
-                <div *ngIf="selectStatus==user.status||!selectStatus"  class="card" style="padding: 10px;width:200px">
-                    <h3>{{user.owner.name}}</h3>
-                    <span *ngIf="user.status=='Assigned'" style="color: green;">{{user.status}}</span>
-                    <span *ngIf="user.status=='missing'" style="color: red;">{{user.status}}</span>
-                    <span *ngIf="user.status=='marked'" style="color: yellow;">{{user.status}}</span>
-                    <span *ngIf="user.status=='handed In'" style="color: rgb(1, 82, 7);">{{user.status}}</span>
-                    <span *ngIf="user.status=='Done late'" style="color: rgb(35, 122, 244);">{{user.status}}</span>
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <select name="" id="" class="form-control" style="width: 30%;" (change)="onSelect($event.target)">
+                        <option value="">All</option>
+                        <option value="Assigned">Assigned</option>
+                        <option value="handed In">Hand In</option>
+                        <option value="missing">Missing</option>
+                        <option value="Done late">Done late</option>
+                        <option value="marked">Marked</option>
+                    </select><br>
+                    <a  style="cursor: pointer;" *ngFor="let user of userlist">
+                        <div style="color: black; margin-top: 10px;display:flex;float: left; margin-left: 5px; ">
+                            
+                            <div *ngIf="selectStatus==user.status||!selectStatus" class="card"
+                                style="padding: 10px;width:200px">
+                                <h3>{{user.owner.name}}</h3>
+                                <span *ngIf="user.status=='Assigned'" style="color: green;">{{user.status}}</span>
+                                <span *ngIf="user.status=='missing'" style="color: red;">{{user.status}}</span>
+                                <span *ngIf="user.status=='marked'" style="color: yellow;">{{user.status}}</span>
+                                <span *ngIf="user.status=='handed In'"
+                                    style="color: rgb(1, 82, 7);">{{user.status}}</span>
+                                <span *ngIf="user.status=='Done late'"
+                                    style="color: rgb(35, 122, 244);">{{user.status}}</span>
+                            </div>
+                            <button class="btn btn-secondary" (click)="onSubmit(user.owner._id)">Info</button>
+                            <button class="btn btn-success" (click)="onChat(user.owner._id)">Chat</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <div class="jumbotron" style="min-height:100%;">
+                        <div class="PRC-header">
+                           <b> {{'Jitesh boliya'}}</b>
+                        </div>
+                        <div class="PRC-body">
+                            <i>Comment 1</i><br>
+                            <i>Comment 1</i><br>
+                            <i>Comment 1</i><br>
+                        </div>
+                        <div class="PRC-footer">
+                            <div class="col-md-12 " style="padding-top: 7px">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control" placeholder="Private comment" formControlName="comment" />
+                                  <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                      Post
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            </a>
         </div>
-        
+
     </div>
 </div>

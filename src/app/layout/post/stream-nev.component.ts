@@ -50,7 +50,7 @@ export class StreamNevComponent implements OnInit,OnDestroy {
 
     this.assign.getAssignment(this.classId).subscribe(res=>{
       this.assignments=res      
-      console.log(res);
+      // console.log(res);
     }) 
 
     this.editor = new Editor();
@@ -68,6 +68,8 @@ export class StreamNevComponent implements OnInit,OnDestroy {
   this.classId=this.activeRoute.snapshot.paramMap.get('id')
   this.streampost.getPost(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.posts=res
+    // console.log(res);
+    
   }) 
   
   
@@ -92,11 +94,16 @@ export class StreamNevComponent implements OnInit,OnDestroy {
   this.currentUser=localStorage.getItem('userid')
   this.streampost.getClassCreator(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.creator=res
+    this.creator=Object.assign({},...this.creator)
   })
     
   
   // Get Class Details
-  this.streampost.getClassDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{this.classDetail=res})
+  this.streampost.getClassDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+    this.classDetail=res
+    this.classDetail=Object.assign({},...this.classDetail)
+    console.log(this.classDetail);
+  })
 
   // Authguard
   if (this.authguard.canActivate() == false) this.router.navigate(['/login'])
@@ -129,8 +136,6 @@ addPost() {
 addComment(id:any){
   const formData = new FormData()
   formData.append('comment', this.commentForm.get('comment')?.value)
-  // formData.append('postId', this.commentForm.get('postId')?.value)
-  // formData.append('postId', this.commentForm.get('postId')?.value)
   
   this.streampost.addComment({comment:formData.get('comment'),owner:this.user._id,postId:id}).subscribe(
     res => {

@@ -17,11 +17,13 @@ export class AssignStudentWorkComponent implements OnInit {
   userDetail: any;
   classid:any;
   userlist:any
+  userId:any
   statusAssign: any;
   statAssign:number;
   statHandedIn:number;
   selectStatus:any
   data:any
+  privateComment: Object;
 
   constructor(private dialog:MatDialog,
               private assign:AssignsrvService,
@@ -55,6 +57,17 @@ export class AssignStudentWorkComponent implements OnInit {
   onSubmit(userid:any){
     this.assign.userId=userid
     this.dialog.open(DialogUserProfiileComponent) 
+  }
+  onChat(userid:any){
+    // this.assign.userId=userid
+    this.userId=userid
+    console.log(this.userId);
+    this.assign.getComment(this.activeRoute.snapshot.paramMap.get('id'),true).subscribe(res=>{
+    //work panding here
+      
+      this.privateComment=res
+    })
+        
   }
 }
 

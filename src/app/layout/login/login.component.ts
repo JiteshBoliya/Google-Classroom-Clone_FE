@@ -12,14 +12,19 @@ import { AuthGuard } from 'src/app/shared/service/auth.guard';
 export class LoginComponent implements OnInit {
   user!: any
   name!: any
+  loading:boolean
   constructor(private signinservice: GoogleGapiService, 
               private ref: ChangeDetectorRef, 
               private router: Router, 
               private authservice: AuthService, 
               private authguard: AuthGuard) { }
 
-  ngOnInit(): void { if (this.authguard.canActivate() == true) this.router.navigate(['/home'])}
+  ngOnInit(): void { 
+    if (this.authguard.canActivate() == true) this.router.navigate(['/home'])
+    this.loading=false
+  }
   signIn() {
+    this.loading=true
     this.signinservice.signin().then((res) => {
       this.authservice.userLogin(res).subscribe(
         res => {

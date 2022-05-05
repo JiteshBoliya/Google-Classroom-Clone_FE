@@ -2,8 +2,8 @@
   <app-stream></app-stream>
   <div class="container" align="center">
     <div class="jumbotron" align="left">
-      <button class="btn btn-primary bt-cr" (click)="onSubmit()" *ngIf="creator[0].owner==currentUser">
-        + Create
+      <button class="btn btn-primary bt-cr" (click)="onSubmit()" *ngIf="creator?creator.owner:''==currentUser">
+        <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/47553/pencil-emoji-clipart-md.png" alt="" height="20px" srcset=""> Create
       </button>
       <div class="list">
 
@@ -32,10 +32,10 @@
                           </a>
                           </div>
                     </div>
-                    <div class="col-md-2"align="center" *ngIf="creator[0].owner==currentUser">
+                    <div class="col-md-2"align="center" *ngIf="creator?creator.owner:''==currentUser">
                         <!-- <h1>{{getstatHandedIn(assign._id)}}</h1><h4><b> Handed in</b></h4> -->
                     </div>
-                    <div class="col-md-2" align="center" *ngIf="creator[0].owner==currentUser">
+                    <div class="col-md-2" align="center" *ngIf="creator?creator.owner:''==currentUser">
                         <!-- <h1>{{statAssign}}</h1><h4><b>Assigned</b></h4> -->
                     </div>
                 </div>

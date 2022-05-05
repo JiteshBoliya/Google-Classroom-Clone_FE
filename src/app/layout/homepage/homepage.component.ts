@@ -10,6 +10,7 @@ import { DialogTodoComponent } from 'src/app/shared/dialogs/dialog-todo/dialog-t
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSettingComponent } from 'src/app/shared/dialogs/dialog-setting/dialog-setting.component';
 import { StreamsrvService } from 'src/app/shared/service/streamsrv.service';
+import { WebDataService } from 'src/app/shared/service/web-data.service';
 // import { join } from 'path';
 
 @Component({
@@ -32,10 +33,15 @@ export class HomepageComponent implements OnInit {
               private auth: AuthService,
               private authguard:AuthGuard,
               private dialog:MatDialog,
-              private activeRoute:ActivatedRoute) { 
+              private activeRoute:ActivatedRoute,
+              private webdata:WebDataService) { 
               }
 
   ngOnInit(): void {
+
+    this.webdata.classSubject.subscribe(res=>{
+      console.log(res);
+    })
 
     // #Get and Validate Rectiveform data
     this.classForm = new FormGroup({
@@ -67,7 +73,7 @@ export class HomepageComponent implements OnInit {
       1
     })
     // #AuthGuard
-    if (this.authguard.canActivate() == false) this.router.navigate(['/login'])
+    // if (this.authguard.canActivate() == false) this.router.navigate(['/login'])
   }
   
   // #Add Class
@@ -84,6 +90,9 @@ export class HomepageComponent implements OnInit {
           title: '[ '+this.classForm.get('name')?.value+' ] Class created',
           showConfirmButton: false,
           timer: 1500
+        })
+        this.webdata.classSubject.subscribe(res=>{
+          console.log(res);
         })
         // Swal.fire("Created", this.classForm.get('name')?.value, "success");
         this.classForm.reset()

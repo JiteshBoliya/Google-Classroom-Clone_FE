@@ -11,7 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class AssignmentNavComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
-  public assignmentForm !: FormGroup;
+  public assignmentForm !: FormGroup
+  public commentForm!:FormGroup
 
   assignment?: any;
   showFiller = false;
@@ -23,8 +24,13 @@ export class AssignmentNavComponent implements OnInit {
   status: any
   assignmentUploaded: boolean
   duedate: any;
-
-
+  panelOpenState = false;
+  comment:any
+  i=0;
+  privateComment:any
+  publicComment:any
+  
+  
   constructor(private assign: AssignsrvService,
     private activeRoute: ActivatedRoute) { }
 
@@ -35,10 +41,11 @@ export class AssignmentNavComponent implements OnInit {
     this.assign.assignId = this.activeRoute.snapshot.paramMap.get('id')
     this.assign.get_SpecificAssignment(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res => {
       this.assignment = res
-      this.owner = this.assignment[0].owner._id
-      this.assignId = this.assignment[0]._id
-      this.time = this.assignment[0].time
-      this.duedate = this.assignment[0].duedate
+      this.assignment=Object.assign({},...this.assignment)
+      this.owner = this.assignment.owner._id
+      this.assignId = this.assignment._id
+      this.time = this.assignment.time
+      this.duedate = this.assignment.duedate
       // console.log(this.time);
 
       if (new Date() > new Date(this.duedate)) this.status = "missing"
@@ -51,9 +58,25 @@ export class AssignmentNavComponent implements OnInit {
         }
       })
     })
+    this.assign.getComment(this.activeRoute.snapshot.paramMap.get('id'),true).subscribe(res=>{
+      console.log("private");
+      console.log(res);
+      this.privateComment=res
+    })    
+    
+    this.assign.getComment(this.activeRoute.snapshot.paramMap.get('id'),false).subscribe(res=>{
+      console.log("public");
+      console.log(res);
+      this.publicComment=res
+    })    
+
     this.assignmentForm = new FormGroup({
       file: new FormControl("", Validators.required)
     })
+    this.commentForm = new FormGroup({
+      comment: new FormControl("")
+    })
+
   }
   uploadFileEvt(imgFile: any) {
     this.text = imgFile.target.files[0].name
@@ -79,6 +102,50 @@ export class AssignmentNavComponent implements OnInit {
         }), (err: any) => {
           console.log(err);
 
+        }
+        // this.assignmentForm.reset()
+      })
+  }
+  addPublicComment(){
+    // console.log("hey");
+    let formData = new FormData() 
+    formData.append('comment',this.commentForm.get('comment')?.value)
+    formData.append('owner', this.owner)
+    formData.append('assignmentId', this.assignId)
+
+    this.assign.addAssignmentComment(formData)
+      .subscribe((res) => {
+        console.log(res);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Comment Posted ',
+          showConfirmButton: false,
+          timer: 1500
+        }), (err: any) => {
+          console.log(err);
+        }
+        // this.assignmentForm.reset()
+      })
+  }
+  addPrivateComment(){
+    let formData = new FormData() 
+    formData.append('comment',this.commentForm.get('comment')?.value)
+    formData.append('owner', this.owner)
+    formData.append('assignmentId', this.assignId)
+    formData.append('private','true')
+
+    this.assign.addAssignmentComment(formData)
+      .subscribe((res) => {
+        console.log(res);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Comment Posted ',
+          showConfirmButton: false,
+          timer: 1500
+        }), (err: any) => {
+          console.log(err);
         }
         // this.assignmentForm.reset()
       })

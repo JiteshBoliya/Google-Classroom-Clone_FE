@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { DialogEmailComponent } from 'src/app/shared/dialogs/dialog-email/dialog-email.component';
+import { AssignsrvService } from 'src/app/shared/service/assignment.service';
 import { StreamsrvService } from 'src/app/shared/service/streamsrv.service';
 import Swal from 'sweetalert2';
 
@@ -15,13 +16,15 @@ export class PeopleComponent implements OnInit {
   userDetail: any;
 
   constructor(private dialog:MatDialog,private streampost: StreamsrvService,
-    private activeRoute: ActivatedRoute) { }
+    private activeRoute: ActivatedRoute,private assign:AssignsrvService) { }
 
   ngOnInit(): void {
 
     this.streampost.getClassDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res => {
-      console.log(res);
       this.classDetail = res
+      this.classDetail=Object.assign({},...this.classDetail)
+      console.log(this.classDetail);
+      
     })
 
     this.streampost.getUserlist(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res => {
@@ -48,7 +51,9 @@ export class PeopleComponent implements OnInit {
       }
     })
   }
-  onEmail() {
+  onEmail(mail:any) {
+    this.assign.usermail=mail
+    console.log(mail);
     this.dialog.open(DialogEmailComponent)
   }
 }

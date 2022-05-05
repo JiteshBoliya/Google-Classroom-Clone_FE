@@ -1,16 +1,18 @@
 .nv{
-    background-color:#025793;
+    background-color:#ffffff;
     width:100%;
     position:sticky;
+    color: black;
     z-index: 1;
     top: 0px;
+    box-shadow: 0px 1px 5px black;
 }
 .active{
-    background-color: white;
-    color: black !important;
+    background-color: gray;
+    color: white !important;
     border-radius: 50px;
 }
 .nav a{
-    color: aliceblue;
+    color: black;
     cursor: pointer;
 }

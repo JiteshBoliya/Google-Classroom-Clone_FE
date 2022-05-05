@@ -15,12 +15,8 @@
     bottom: 0px;
 }
 .jumbo-class-code{
-    /* height:fit-content; */
-    padding: 20px;
+    padding: 10px 0px 0px 20px;
     color:black;
-    font-weight: 400;
-    /* height:fit-content; */
-    /* min-height: 100px; */
     background-color:white;    
     box-shadow: 0 0px 7px rgba(0, 0, 0, 0.5);
 }
@@ -31,6 +27,7 @@
     color:maroon;
     font-weight: 600;
 }
+
 .in-post{
     border:0px;
     height:3    0px;
@@ -75,7 +72,8 @@
 .bod{
     /* background-image: url('cool-background (2).png'); */
     /* background-color: rgb(208, 208, 208); */
-    background: linear-gradient(to top, #ffffff 0%, #013256 100%);
+    /* background: linear-gradient(to top, #ffffff 0%, #013256 100%); */
+    background-color: gray;
     background-attachment: fixed;
     min-height: 100vh;
 }
@@ -96,4 +94,16 @@
   }
   .NgxEditor__Wrapper{
       min-height: 300px;
+  }
+  .btn-uploadimg{
+      background-image: url('https://icon-library.com/images/android-camera-icon/android-camera-icon-9.jpg');
+      position:absolute; 
+      top: 5px;
+      right: 5px;
+      color: white;
+      background-position: center;
+      background-size: cover;
+      height: 30px;
+      background-color:white;
+      width: 30px;
   }

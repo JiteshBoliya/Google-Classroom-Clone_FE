@@ -50,6 +50,7 @@ export class StreamComponent implements OnInit {
   this.currentUser=localStorage.getItem('userid')
   this.streampost.getClassCreator(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.creator=res
+    this.creator=Object.assign({},...this.creator)
   })
 
     if(this.uname==null){
