@@ -23,7 +23,7 @@ export class AssignStudentWorkComponent implements OnInit {
   statHandedIn:number;
   selectStatus:any
   data:any
-  privateComment: Object;
+  privateComment: any;
 
   constructor(private dialog:MatDialog,
               private assign:AssignsrvService,
@@ -37,19 +37,7 @@ export class AssignStudentWorkComponent implements OnInit {
     this.assign.get_classDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.userlist=res
   })
-
-  this.assign.get_countStatus('Assigned',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
-      this.statAssign=res.data
-  })
-  this.assign.get_countStatus('missing',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
-    this.statAssign=+res.data
-  })
-  this.assign.get_countStatus('handed In',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
-    this.statHandedIn=res.data
-  })
-  this.assign.get_countStatus('Done late',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
-    this.statHandedIn=+res.data
-  })
+  this.OnRefreshData()
   }
   onSelect(option:any){
     this.selectStatus=option.value  
@@ -60,14 +48,27 @@ export class AssignStudentWorkComponent implements OnInit {
   }
   onChat(userid:any){
     // this.assign.userId=userid
-    this.userId=userid
-    console.log(this.userId);
-    this.assign.getComment(this.activeRoute.snapshot.paramMap.get('id'),true).subscribe(res=>{
-    //work panding here
-      
+    // this.userId=userid
+    console.log(userid);
+    this.assign.getPrivateComment(this.activeRoute.snapshot.paramMap.get('id'),true,userid).subscribe(res=>{
       this.privateComment=res
+      console.log(res);
+      
     })
-        
+  }
+  OnRefreshData(){
+    this.assign.get_countStatus('Assigned',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+      this.statAssign=res.data
+  })
+  this.assign.get_countStatus('missing',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+    this.statAssign=+res.data
+  })
+  this.assign.get_countStatus('handed In',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+    this.statHandedIn=res.data
+  })
+  this.assign.get_countStatus('Done late',this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+    this.statHandedIn=+res.data
+  })  
   }
 }
 

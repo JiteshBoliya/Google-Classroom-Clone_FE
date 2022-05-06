@@ -8,7 +8,7 @@
         </th>
         <tr  *ngFor="let user of userDetail;let j=index" >
             <td>{{user.user.name}}</td>
-            <td *ngFor="let assign of assignments;let i=index"><a>{{getMarks(user.user._id,assign._id)}}/{{assign.points}}</a></td>
+            <td *ngFor="let assign of assignments;let i=index" [ngStyle]="{'background-color':getMarks(user.user._id,assign._id)>0?'green':'transparent'}"><a>{{getMarks(user.user._id,assign._id)}}/{{assign.points}}</a></td>
         </tr>
       </table>
     </div>

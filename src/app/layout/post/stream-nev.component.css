@@ -1,16 +1,17 @@
 
 .cv{
-    background-image: url('https://images.unsplash.com/photo-1444080748397-f442aa95c3e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80');
     background-size: cover;
     margin:5px;
     /* padding: 10px; */
     min-height: 20vh;
     position: relative;
     border-radius:10px;
+    padding: 0px;
     color:white;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
 }
 .footer{
+    padding-left: 20px;
     position:absolute;
     bottom: 0px;
 }

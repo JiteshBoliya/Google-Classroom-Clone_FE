@@ -1,14 +1,15 @@
 <div class="bod">
   <app-stream></app-stream>
   <div class="container">
-    <div class="container-fluid cv">
+    <div class="container-fluid cv" >
+      <img src="http://localhost:3000/{{classDetail.image[0].path}}" alt="" srcset="" style="height:200px;width: 100%;border-radius: 10px;">
       <div class="footer">
         <h1>{{  this.classDetail?this.classDetail.name:'' }}
         </h1>
         <h5>{{ this.classDetail?this.classDetail.subject:'' }}</h5>
       </div>
       <button (click)="fileInput.click()"  class="btn btn-uploadimg"></button>
-      <input hidden #fileInput  multiple name="file" type="file" id="file">
+      <input hidden #fileInput name="file" type="file" id="file" (change)="uploadFileEvt($event)">
     </div>
   </div>
   <div class="container">

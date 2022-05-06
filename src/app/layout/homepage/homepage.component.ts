@@ -70,7 +70,8 @@ export class HomepageComponent implements OnInit {
 
     this.classsub.classlist(localStorage.getItem('userid')).subscribe(res=>{
       this.joinclasses=res
-      1
+      console.log(this.joinclasses);
+      
     })
     // #AuthGuard
     // if (this.authguard.canActivate() == false) this.router.navigate(['/login'])

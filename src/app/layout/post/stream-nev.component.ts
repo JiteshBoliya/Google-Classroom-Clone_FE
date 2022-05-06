@@ -34,6 +34,7 @@ export class StreamNevComponent implements OnInit,OnDestroy {
   public postForm !: FormGroup;
   creator: any;
   assignments:any
+  image: any;
   constructor(private streampost:StreamsrvService,
     private classsub: ClasssrvService, 
     private formBuilder: FormBuilder, 
@@ -150,6 +151,21 @@ addComment(id:any){
     }
   )
 }
-
+uploadFileEvt(imgFile: any) {
+  this.activeRoute.snapshot.paramMap.get('id')
+  this.image=imgFile.target.files[0]
+  
+  const formData = new FormData()
+  formData.append('files',this.image)
+  this.classsub.updateImg(this.activeRoute.snapshot.paramMap.get('id'),formData).subscribe(res=>{
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Class image updated', 
+      showConfirmButton: false,
+      timer: 1500
+    })
+  })
+}
 }
  

@@ -33,4 +33,10 @@ export class ClasssrvService {
   classlist(userid:any){
     return this.http.get(`${this.url}/classlist/`+userid)
   }
+  updateImg(id:any,img:any){
+    return this.http.post<any>(`${this.url}/updateimg/`+id,img)}
+  
+  updateUserImg(id:any,img:any){
+    return this.http.post<any>(`http://localhost:3000/user/updateUserimg/`+id,img)}
+
 }

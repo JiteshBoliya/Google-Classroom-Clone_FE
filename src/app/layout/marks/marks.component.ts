@@ -16,6 +16,7 @@ export class MarksComponent implements OnInit {
   userAssignment: any;
   AssignmentArraysize:Number
   marks:[any][any];
+  gotMarks:any
 
   constructor(private streampost:StreamsrvService,
     private activeRoute:ActivatedRoute,
@@ -47,7 +48,6 @@ export class MarksComponent implements OnInit {
   let marks=[...this.userAssignment].find((el:any)=>{
      if(el.owner===userid && el.assignment._id===assignId) return el.marks
      })
-    //  console.log(marks?marks.marks:'');
      return marks?marks.marks:0
   }
 }

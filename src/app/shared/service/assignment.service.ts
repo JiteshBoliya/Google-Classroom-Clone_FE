@@ -37,8 +37,10 @@ export class AssignsrvService {
 
   getComment(AssignId:any,pri:boolean){ return this.http.get(`${this.url}/Comment/`+AssignId+`/`+pri)}
 
+  getPrivateComment(AssignId:any,pri:boolean,owner:any){ return this.http.get(`${this.url}/Comment/`+AssignId+`/`+pri+`/`+owner)}
+
   sendMail(data:any){return this.http.post(`${this.userUrl}/mail`,data)}
 
-  updateMarks(data:any){return this.http.post(`${this.url}/update/marks`,data)}
+  updateMarks(data:any){return this.http.post(`${this.url}/userassignment/addmarks`,data)}
 
 }

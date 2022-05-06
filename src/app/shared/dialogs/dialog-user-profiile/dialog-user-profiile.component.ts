@@ -43,15 +43,11 @@ export class DialogUserProfiileComponent implements OnInit {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Email sent', 
+        title: 'Marks updated', 
         showConfirmButton: false,
         timer: 1500
       })
       window.close()
     })
   }
-  addPrivateComment(){
-    
-  }
-
 }

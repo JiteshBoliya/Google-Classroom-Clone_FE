@@ -9,7 +9,7 @@
             <b style="position:absolute;right: 30px;top:130px;color: blue;">{{userDetail?userDetail.status:''}}</b>
             <hr>
             <ul>
-                <li> <a href="http://localhost:3000/{{userDetail?userDetail.file[0].path:''}}" target="_blank">{{userDetail?userDetail.file[0].originalname:''}}</a></li>
+                <li> <a href="http://localhost:3000/{{userDetail?userDetail.file[0]?userDetail.file[0].path:'':''}}" target="_blank">{{userDetail?userDetail.file[0]?userDetail.file[0].originalname:'':''}}</a></li>
             </ul>
             <hr>
             <b>Marks:</b><br>
@@ -22,8 +22,6 @@
                 </div>  
             </div>
             </form>
-            <hr>
-                  
         </div>
         
     </mat-card-content>

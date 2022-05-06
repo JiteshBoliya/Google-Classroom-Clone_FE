@@ -120,10 +120,11 @@
     
             <a class="col-lg-2" routerLink="/stream/post/{{class._id}}" *ngFor="let class of classes" >
                 <div class="card">
+                    <div class="imge">
+                        <img src="http://localhost:3000/{{class.image[0]?class.image[0].path:''}}" alt="" srcset="" class="imge" >
+                    </div>
                     <div class="card-body cust">
-                        <div class="imge">
-                            <p>{{class.name}}</p>
-                        </div>
+                        <h1 style="padding-left: 20px;"><b>{{class.name}}</b></h1>
                         <div class="crdbody">
                             <b>{{class.subject}}</b>
                         </div>
@@ -140,10 +141,11 @@
 
             <a class="col-lg-2" routerLink="/stream/post/{{jclass.class._id}}" *ngFor="let jclass of joinclasses" >
                 <div class="card" *ngIf="jclass.class!==null">
+                    <div class="imge">
+                        <img src="http://localhost:3000/{{jclass.class.image[0]?jclass.class.image[0].path:''}}" alt="" srcset="" class="imge" >
+                    </div>
                     <div class="card-body cust">
-                        <div class="imge">
-                            <p>{{jclass.class.name}}</p>
-                        </div>
+                        <h1 style="padding-left: 20px;"><b>{{jclass.class.name}}</b></h1>
                         <div class="crdbody">
                             <b>{{jclass.class.subject}}</b>
                         </div>
