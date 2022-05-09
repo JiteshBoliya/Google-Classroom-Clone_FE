@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Editor } from 'ngx-editor';
+import { User } from 'src/app/shared/models/user.model';
 import { AssignsrvService } from 'src/app/shared/service/assignment.service';
 import { AuthGuard } from 'src/app/shared/service/auth.guard';
 import { AuthService } from 'src/app/shared/service/auth.service';
@@ -16,6 +17,7 @@ import Swal from 'sweetalert2';
 })
 export class StreamNevComponent implements OnInit,OnDestroy {
 
+  isCreator:boolean=false;
   editor: Editor;
   html: '';
   posts: any
@@ -35,6 +37,8 @@ export class StreamNevComponent implements OnInit,OnDestroy {
   creator: any;
   assignments:any
   image: any;
+  userDetail: any;
+  isloaded: boolean=false;
   constructor(private streampost:StreamsrvService,
     private classsub: ClasssrvService, 
     private formBuilder: FormBuilder, 
@@ -42,46 +46,43 @@ export class StreamNevComponent implements OnInit,OnDestroy {
     private auth: AuthService,
     private authguard:AuthGuard,
     private activeRoute:ActivatedRoute,
-    private assign:AssignsrvService,) { }
-
+    private assign:AssignsrvService) { }
   ngOnInit(): void {
 
+    setInterval(() => {
+      this.isloaded=true 
+    }, 2000);
+
+
+    //Get upcomming assignment list
     this.classId=this.activeRoute.snapshot.paramMap.get('id')
     this.assign.classId=this.classId
-
     this.assign.getAssignment(this.classId).subscribe(res=>{
       this.assignments=res      
-      // console.log(res);
     }) 
+    
+    //Get user Image
+    this.classsub.getUserImg(localStorage.getItem('userid')).subscribe(res=>{
+      this.userDetail=res
+    })
 
     this.editor = new Editor();
   
-  // Get post form data
+  // Set post form data
   this.postForm = new FormGroup({text: new FormControl("", Validators.required)})
 
 
-  // Get comment form data
+  // Set comment form data
   this.commentForm = new FormGroup({
     comment: new FormControl("", Validators.required),
-    postId:new FormControl("")})
+    postId:new FormControl("")
+  })
 
-  // Get post by classid
-  this.classId=this.activeRoute.snapshot.paramMap.get('id')
-  this.streampost.getPost(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
-    this.posts=res
-    // console.log(res);
+    // Get post by class id
+    this.streampost.getPost(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{this.posts=res}) 
     
-  }) 
-  
-  
-    // Get comment by postid
-    // this.postId=this.activeRoute.snapshot.paramMap.get('pid')
-    // console.log(postId);
-    
-    this.streampost.getComment(this.activeRoute.snapshot.paramMap.get('pid')).subscribe(res=>{
-      // console.log("comment:",res);
-      this.comment=res
-    }) 
+    // Get comment by post id
+    this.streampost.getComment(this.activeRoute.snapshot.paramMap.get('pid')).subscribe(res=>{this.comment=res}) 
 
   // use the user subject
   this.auth.usersubject.subscribe(res=>{this.user=res})
@@ -96,6 +97,9 @@ export class StreamNevComponent implements OnInit,OnDestroy {
   this.streampost.getClassCreator(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.creator=res
     this.creator=Object.assign({},...this.creator)
+    if(this.currentUser==this.creator.owner) this.classsub.isCreator=true
+    else this.classsub.isCreator=false
+    this.isCreator=this.classsub.isCreator
   })
     
   
@@ -126,6 +130,9 @@ addPost() {
         showConfirmButton: false,
         timer: 1500
       })
+
+    // Get post by class id
+    this.streampost.getPost(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{this.posts=res}) 
       this.postForm.reset()
     }
   )
@@ -147,6 +154,8 @@ addComment(id:any){
         showConfirmButton: false,
         timer: 1500
       })
+    // Get comment by post id
+    this.streampost.getComment(this.activeRoute.snapshot.paramMap.get('pid')).subscribe(res=>{this.comment=res})
       this.commentForm.reset()
     }
   )
@@ -165,6 +174,11 @@ uploadFileEvt(imgFile: any) {
       showConfirmButton: false,
       timer: 1500
     })
+    this.streampost.getClassDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
+      this.classDetail=res
+      this.classDetail=Object.assign({},...this.classDetail)
+      console.log(this.classDetail);
+    })  
   })
 }
 }

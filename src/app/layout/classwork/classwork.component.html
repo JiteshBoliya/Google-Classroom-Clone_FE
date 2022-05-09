@@ -1,53 +1,57 @@
 <div class="bod">
   <app-stream></app-stream>
-  <div class="container" align="center">
+  <div class="container" align="center" *ngIf="isloaded">
     <div class="jumbotron" align="left">
-      <button class="btn btn-primary bt-cr" (click)="onSubmit()" *ngIf="creator?creator.owner:''==currentUser">
-        <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/47553/pencil-emoji-clipart-md.png" alt="" height="20px" srcset=""> Create
+      <button class="btn btn-primary bt-cr" (click)="onSubmit()" *ngIf="isCreator">
+        <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/47553/pencil-emoji-clipart-md.png" alt=""
+          height="20px" srcset=""> Create
       </button>
       <div class="list">
 
         <div class="element" *ngFor="let assign of assignments">
-            <mat-accordion >
-              <mat-expansion-panel
-                (opened)="panelOpenState = true"
-                (closed)="panelOpenState = false"
-              >
-                <mat-expansion-panel-header style=" box-shadow: 0px 0px 5px black;" >
-                  <mat-panel-title>
-                    <img src="https://openclipart.org/image/800px/215492" style="margin-right: 50px;" alt="" height="30px">  
-                    <b><i>{{assign.title}} </i></b> </mat-panel-title>
-                  <mat-panel-description>
-                    Due date : {{assign.duedate|date}}
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <hr />
-                <div class="as_body row">
-                    <div class="col-md-8" >
-                        <p>{{assign.description}}</p>
-                        <div class="assignment" *ngFor="let files of assign.file" align="center">
-                          <a href="http://localhost:3000/{{files.path}}" target="_blank" >
-                          <img src="http://localhost:3000/{{files.path}}" height="50px" alt="{{assign.file[0].path}}">
-                            <h4>{{files.originalname}}</h4>
-                          </a>
-                          </div>
-                    </div>
-                    <div class="col-md-2"align="center" *ngIf="creator?creator.owner:''==currentUser">
-                        <!-- <h1>{{getstatHandedIn(assign._id)}}</h1><h4><b> Handed in</b></h4> -->
-                    </div>
-                    <div class="col-md-2" align="center" *ngIf="creator?creator.owner:''==currentUser">
-                        <!-- <h1>{{statAssign}}</h1><h4><b>Assigned</b></h4> -->
-                    </div>
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header style=" box-shadow: 0px 0px 5px black;">
+                <mat-panel-title>
+                  <img src="https://openclipart.org/image/800px/215492" style="margin-right: 50px;" alt=""
+                    height="30px">
+                  <b><i>{{assign.title}} </i></b>
+                </mat-panel-title>
+                <mat-panel-description>
+                  Due date : {{assign.duedate|date}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <hr />
+              <div class="as_body row">
+                <div class="col-md-8">
+                  <p>{{assign.description}}</p>
+                  <div class="assignment" *ngFor="let files of assign.file" align="center">
+                    <a href="http://localhost:3000/{{files.path}}" target="_blank">
+                      <img src="http://localhost:3000/{{files.path}}" height="50px" alt="{{assign.file[0].path}}">
+                      <h4>{{files.originalname}}</h4>
+                    </a>
+                  </div>
                 </div>
-                <hr />
-                <div class="as_foot">
-                  <a routerLink="/Instruction/{{assign._id}}"><b>View assignment</b> </a>
+                <div class="col-md-2" align="center" *ngIf="creator?creator.owner:''==currentUser">
+                  <!-- <h1>{{getstatHandedIn(assign._id)}}</h1><h4><b> Handed in</b></h4> -->
                 </div>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </div>
+                <div class="col-md-2" align="center" *ngIf="creator?creator.owner:''==currentUser">
+                  <!-- <h1>{{statAssign}}</h1><h4><b>Assigned</b></h4> -->
+                </div>
+              </div>
+              <hr />
+              <div class="as_foot">
+                <a routerLink="/Instruction/{{assign._id}}"><b>View assignment</b> </a>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
 
       </div>
     </div>
+  </div>
+
+  <div style="width: 100%; text-align: center" *ngIf="!isloaded">
+    <img src="https://www.ispsolutions.co.za/sitepad-data/uploads//65ba488626025cff82f091336fbf94bb.gif" alt="">
   </div>
 </div>

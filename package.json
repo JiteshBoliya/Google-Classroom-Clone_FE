@@ -31,6 +31,7 @@
     "ng-toggle-button": "^1.3.0",
     "ngx": "^2.4.0",
     "ngx-editor": "^12.2.3",
+    "ngx-skeleton-loader": "^5.0.0",
     "ngx-toaster": "^1.0.1",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.4.8",

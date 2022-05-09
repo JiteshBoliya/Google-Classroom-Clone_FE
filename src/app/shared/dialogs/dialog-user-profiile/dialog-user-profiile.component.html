@@ -9,21 +9,23 @@
             <b style="position:absolute;right: 30px;top:130px;color: blue;">{{userDetail?userDetail.status:''}}</b>
             <hr>
             <ul>
-                <li> <a href="http://localhost:3000/{{userDetail?userDetail.file[0]?userDetail.file[0].path:'':''}}" target="_blank">{{userDetail?userDetail.file[0]?userDetail.file[0].originalname:'':''}}</a></li>
+                <li> <a href="http://localhost:3000/{{userDetail?userDetail.file[0]?userDetail.file[0].path:'':''}}"
+                        target="_blank">{{userDetail?userDetail.file[0]?userDetail.file[0].originalname:'':''}}</a></li>
             </ul>
             <hr>
             <b>Marks:</b><br>
             <form [formGroup]="MarksForm" (ngSubmit)="submitdata()">
-            <div class="input-group mb-3">
-                <input type="number" name="marks" id="" value="{{userDetail?userDetail.marks:''}}" placeholder="Marks"
-                    class="form-control" style="background-color: transparent;"formControlName="marks">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Save</button>
-                </div>  
-            </div>
+                <div class="input-group mb-3">
+                    <input type="number" name="marks" id="" value="{{userDetail?userDetail.marks:''}}"
+                        placeholder="Marks" class="form-control" style="background-color: transparent;"
+                        formControlName="marks">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </div>
             </form>
         </div>
-        
+
     </mat-card-content>
 </mat-card>
-<mat-accordion >
+<mat-accordion>

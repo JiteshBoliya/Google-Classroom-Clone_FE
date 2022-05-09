@@ -1,45 +1,50 @@
-
-.bod{
+.bod {
     align-items: center;
     /* background-image: linear-gradient(rgb(20, 127, 184),rgb(5, 34, 53)); */
     /* background: linear-gradient(to top, #ffffff 0%, #013256 100%); */
     background-color: gray;
-    
+
     /* background-color: rgb(30, 68, 88); */
     color: white;
     min-height: 100vh;
 }
-.jumbotron{
-    background-color:rgb(47, 47, 48);
+
+.jumbotron {
+    background-color: rgb(47, 47, 48);
 }
-.jumbotron hr{  
+
+.jumbotron hr {
     background-color: white;
 }
 
-.in-comment{
-    border:1px black solid;
-    height:40px;
+.in-comment {
+    border: 1px black solid;
+    height: 40px;
     padding: 20px;
     width: 100%;
-    border-radius:20px;
+    border-radius: 20px;
 }
-.footer{
-    position:absolute;
+
+.footer {
+    position: absolute;
     bottom: 0px;
 }
-.assign-body{
+
+.assign-body {
     min-height: 20vh;
 }
-.todo{
+
+.todo {
     height: 50px;
     width: 50px;
-    position:fixed;
+    position: fixed;
     top: 100px;
     left: 30px;
     z-index: 1;
     border-radius: 100px;
-  }
-  .todo:hover{
+}
+
+.todo:hover {
     box-shadow: 0px 0px 10px rgb(42, 7, 106);
     /* height: 55px;
     width: 55px; */
@@ -47,43 +52,49 @@
     border: 0px;
     /* bottom: 95px; */
     /* right: 95px; */
-  }
-  .stud-list ul li{
-      list-style-type:none;
-      padding: 10px;
-  }
-  .stud-list ul li:hover{
-      background-color: azure;
-      color: black;
-  }
-.container-data{
-    /* align-items: center; */
-    /* align-self: center; */
-    /* align-content:center; */
 }
-.card-status{
+
+.stud-list ul li {
+    list-style-type: none;
+    padding: 10px;
+}
+
+.stud-list ul li:hover {
+    background-color: azure;
+    color: black;
+}
+
+/* .container-data {
+    align-items: center;
+    align-self: center;
+    align-content:center;
+} */
+
+.card-status {
     width: 50%;
     align-self: center;
     text-align: center;
     padding: 5px;
-    background-color:white;
+    background-color: white;
     box-shadow: 0px 1px 5px black;
     color: black;
     /* border-radius: 100px; */
- 
+
 }
+
 /* .card-counter{
     background-color: aliceblue;
     color: black;
     border-radius: 20px;
     /* opacity: 0.9;
 } */
-.jumbotron{
+.jumbotron {
     padding: 0px;
     position: relative;
     border-radius: 10px;
 }
-.PRC-header{
+
+.PRC-header {
     /* position: relative; */
     background-color: white;
     color: black;
@@ -91,50 +102,64 @@
     padding: 10px;
     border-radius: 10px 10px 0px 0px;
 }
-.PRC-body{
+
+.PRC-body {
     padding: 10px;
+    height: fit-content;
 }
-.PRC-footer{
-    position:absolute;
-    bottom:0px;
+
+.PRC-footer {
+    position: absolute;
+    bottom: 0px;
     background-color: rgb(248, 248, 248);
     border-radius: 10px;
     width: 100%;
     height: 50px;
 }
-.btn-chat{
+
+.btn-chat {
     height: 40px;
     width: 70px;
     position: absolute;
     right: 0px;
     top: 0px;
 }
-.btn-info{
+
+.btn-info {
     height: 40px;
     width: 70px;
     position: absolute;
     right: 0px;
-    bottom: 0px;    
+    bottom: 0px;
+    color: rgb(71, 194, 251);
+    background-color: aliceblue;
+    border-color: rgb(71, 194, 251);
 }
+
+.btn-info:hover {
+    background-color: rgb(71, 194, 251);
+    color: white;
+}
+
 .element {
     height: 100%;
     width: 100%;
     margin: 0 auto;
     animation-name: stretch;
-    animation-duration: 0.2s; 
-    animation-timing-function: ease-out; 
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
     animation-delay: 0;
     animation-direction: alternate;
     animation-fill-mode: none;
     animation-play-state: running;
-  }
-  
-  @keyframes stretch {
+}
+
+@keyframes stretch {
     0% {
-      transform: scale(0.1);
+        transform: scale(0.1);
     }
+
     100% {
-      transform: scale(1);
+        transform: scale(1);
     }
-  }
-  
+}

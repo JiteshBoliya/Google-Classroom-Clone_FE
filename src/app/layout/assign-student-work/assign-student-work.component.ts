@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { getIndex } from '@syncfusion/ej2-angular-richtexteditor';
 import { DialogUserProfiileComponent } from 'src/app/shared/dialogs/dialog-user-profiile/dialog-user-profiile.component';
 import { AssignsrvService } from 'src/app/shared/service/assignment.service';
+import { ClasssrvService } from 'src/app/shared/service/classsrv.service';
 import { StreamsrvService } from 'src/app/shared/service/streamsrv.service';
 
 @Component({
@@ -24,18 +25,28 @@ export class AssignStudentWorkComponent implements OnInit {
   selectStatus:any
   data:any
   privateComment: any;
+  isCreator: any;
+  isloaded: boolean=false;
 
   constructor(private dialog:MatDialog,
               private assign:AssignsrvService,
               private streampost:StreamsrvService,
-              private activeRoute:ActivatedRoute) { }
+              private activeRoute:ActivatedRoute,
+              private classsub:ClasssrvService) { }
 
   ngOnInit(): void {
-    // this.statAssign=0
+
+    setInterval(() => {
+      this.isloaded=true 
+    }, 2000);
+    
     this.assign.assignId=this.activeRoute.snapshot.paramMap.get('id')
 
     this.assign.get_classDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.userlist=res
+
+    this.isCreator=this.classsub.isCreator
+    
   })
   this.OnRefreshData()
   }
@@ -47,13 +58,8 @@ export class AssignStudentWorkComponent implements OnInit {
     this.dialog.open(DialogUserProfiileComponent) 
   }
   onChat(userid:any){
-    // this.assign.userId=userid
-    // this.userId=userid
-    console.log(userid);
     this.assign.getPrivateComment(this.activeRoute.snapshot.paramMap.get('id'),true,userid).subscribe(res=>{
       this.privateComment=res
-      console.log(res);
-      
     })
   }
   OnRefreshData(){

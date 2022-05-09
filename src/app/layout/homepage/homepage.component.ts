@@ -26,6 +26,7 @@ export class HomepageComponent implements OnInit {
   joinclasses: any;
   currentUser: string;
   creator: any;
+  isloaded: boolean=false;
   constructor(private classsub: ClasssrvService, 
               private formBuilder: FormBuilder,
               private streampost:StreamsrvService, 
@@ -38,6 +39,11 @@ export class HomepageComponent implements OnInit {
               }
 
   ngOnInit(): void {
+
+    setInterval(() => {
+      this.isloaded=true 
+    }, 2000);
+    
 
     this.webdata.classSubject.subscribe(res=>{
       console.log(res);
@@ -70,11 +76,9 @@ export class HomepageComponent implements OnInit {
 
     this.classsub.classlist(localStorage.getItem('userid')).subscribe(res=>{
       this.joinclasses=res
-      console.log(this.joinclasses);
-      
     })
     // #AuthGuard
-    // if (this.authguard.canActivate() == false) this.router.navigate(['/login'])
+    if (this.authguard.canActivate() == false) this.router.navigate(['/login'])
   }
   
   // #Add Class
@@ -82,7 +86,6 @@ export class HomepageComponent implements OnInit {
     const formData = new FormData()
     formData.append('name', this.classForm.get('name')?.value)
     formData.append('subject', this.classForm.get('subject')?.value)
-    // console.log(this.user);
     this.classsub.addClass({name:formData.get('name'),subject:formData.get('subject'),owner:this.user._id}).subscribe(
       res => {
         Swal.fire({
@@ -95,18 +98,14 @@ export class HomepageComponent implements OnInit {
         this.webdata.classSubject.subscribe(res=>{
           console.log(res);
         })
-        // Swal.fire("Created", this.classForm.get('name')?.value, "success");
+        this.classsub.getClass(localStorage.getItem('userid')).subscribe(res=>{
+          this.classes=res
+        })
         this.classForm.reset()
       }
     )
-    // window.location.reload();
   } 
   joinClass(){
-    // const formData = new FormData()
-    // formData.append('classcode', this.classForm.get('classcode')?.value)
-    // Get classid if exist
-    console.log(this.joinClassForm.get('classcode')?.value);
-    
     this.classsub.CheckCode(this.joinClassForm.get('classcode')?.value).subscribe(
       res => {
         console.log("res:"+res);
@@ -118,6 +117,9 @@ export class HomepageComponent implements OnInit {
             title: 'Class Enrolled',
             showConfirmButton: false,
             timer: 1500
+          })
+          this.classsub.classlist(localStorage.getItem('userid')).subscribe(res=>{
+            this.joinclasses=res
           })
         })
         }

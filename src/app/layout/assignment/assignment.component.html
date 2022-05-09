@@ -1,9 +1,10 @@
 <div class="nv">
-<app-sidebar></app-sidebar>
+    <app-sidebar></app-sidebar>
     <nav class="navbar nav justify-content-center">
-        <!-- <a class="nav-link" ><b>Home</b><img src="https://icon-library.com/images/back-icon-png/back-icon-png-17.jpg" alt="" height="30px"></a> --> 
+        <!-- <a class="nav-link" ><b>Home</b><img src="https://icon-library.com/images/back-icon-png/back-icon-png-17.jpg" alt="" height="30px"></a> -->
         <a class="nav-link" routerLinkActive="active" routerLink="/Instruction/{{assignId}}">Instruction</a>
-        <a class="nav-link" routerLinkActive="active" routerLink="/studentWork/{{assignId}}">Student Work</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/studentWork/{{assignId}}" *ngIf="isCreator">Student
+            Work</a>
     </nav>
 </div>
 <router-outlet></router-outlet>

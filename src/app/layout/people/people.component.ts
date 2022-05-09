@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { DialogEmailComponent } from 'src/app/shared/dialogs/dialog-email/dialog-email.component';
 import { AssignsrvService } from 'src/app/shared/service/assignment.service';
+import { ClasssrvService } from 'src/app/shared/service/classsrv.service';
 import { StreamsrvService } from 'src/app/shared/service/streamsrv.service';
 import Swal from 'sweetalert2';
 
@@ -14,17 +15,28 @@ import Swal from 'sweetalert2';
 export class PeopleComponent implements OnInit {
   classDetail: any;
   userDetail: any;
+  isCreator: any;
+  userDetails: any;
+  isloaded: boolean=false;
 
   constructor(private dialog:MatDialog,private streampost: StreamsrvService,
-    private activeRoute: ActivatedRoute,private assign:AssignsrvService) { }
+    private activeRoute: ActivatedRoute,private assign:AssignsrvService,
+    private classsub: ClasssrvService,) { }
 
   ngOnInit(): void {
+
+    setInterval(() => {
+      this.isloaded=true 
+    }, 2000);
 
     this.streampost.getClassDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res => {
       this.classDetail = res
       this.classDetail=Object.assign({},...this.classDetail)
-      console.log(this.classDetail);
-      
+    })
+    this.isCreator=this.classsub.isCreator
+    
+    this.classsub.getUserImg(localStorage.getItem('userid')).subscribe(res=>{
+      this.userDetails=res
     })
 
     this.streampost.getUserlist(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res => {

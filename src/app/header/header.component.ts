@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
       // #Get user name
-      // this.auth.getUser(localStorage.getItem('userData')).subscribe(res=>{this.uname=res.name})
       this.auth.usersubject.subscribe(res=>{
         if(res==null){
           this.auth.getUser(localStorage.getItem('userid')).subscribe(res=>{

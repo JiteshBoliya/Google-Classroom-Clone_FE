@@ -1,4 +1,4 @@
-.bod{
+.bod {
     /* background-image: url('cool-background (2).png'); */
     /* background-color: gray; */
 
@@ -9,6 +9,7 @@
     min-width: 100vw;
     width: fit-content;
 }
-.table-body{
+
+.table-body {
     padding: 10px 10px 10px 10px;
 }

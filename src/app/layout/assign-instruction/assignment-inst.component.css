@@ -1,55 +1,61 @@
-
-.bod{
+.bod {
     align-items: center;
     /* background-image: linear-gradient(rgb(20, 127, 184),rgb(5, 34, 53)); */
     /* background: linear-gradient(to top, #ffffff 0%, #013256 100%); */
     background-color: gray;
-    
+
     /* background-color: #29465b; */
     color: white;
     min-height: 100vh;
 }
-.jumbotron{
+
+.jumbotron {
     background-color: transparent;
 }
-.jumbotr{
+
+.jumbotr {
     /* background-color:transparent; */
     background-color: white;
     padding: 50px;
     color: black;
-    height:fit-content;
+    height: fit-content;
     border-radius: 10px;
     box-shadow: 0px 1px 3px black;
 
 }
-.jumbotron hr{  
+
+.jumbotron hr {
     background-color: black;
 }
 
-.in-comment{
-    border:0px black solid;
-    height:20px;
+.in-comment {
+    border: 0px black solid;
+    height: 20px;
     padding: 20px;
     width: 80%;
     /* border-radius:20px; */
 }
-.footer{
-    position:absolute;
+
+.footer {
+    position: absolute;
     bottom: 0px;
 }
-.assign-body{
+
+.assign-body {
     min-height: 20vh;
 }
-.todo{
+
+.todo {
     height: 50px;
     width: 50px;
-    position:fixed;
+    position: fixed;
     top: 100px;
     left: 30px;
     z-index: 1;
     border-radius: 100px;
-  }
-  .todo:hover{
+}
+
+.todo:hover {
     box-shadow: 0px 0px 10px rgb(42, 7, 106);
     /* height: 55px;
     width: 55px; */
@@ -57,72 +63,83 @@
     border: 0px;
     /* bottom: 95px; */
     /* right: 95px; */
-  }
-  .assignment {
+}
+
+.assignment {
     font-size: 10px;
     width: 200px;
-    word-wrap:break-word;
+    word-wrap: break-word;
     background-color: rgb(179, 179, 179);
     color: white;
-    padding:10px;
+    padding: 10px;
     border-radius: 20px;
     color: black;
 
 }
-.assignment a{
+
+.assignment a {
     color: white;
 }
-.assignment:hover{
+
+.assignment:hover {
     box-shadow: 0px 0px 2px black;
 }
-.assign-upload{
+
+.assign-upload {
     background-color: white;
     color: black;
     border-radius: 10px;
     padding: 50px 20px 20px 20px;
     min-width: fit-content;
 }
-.assign-upload b{
-    position:absolute;
+
+.assign-upload b {
+    position: absolute;
     top: 20px;
     left: 30px;
 }
-.assign-upload i{
-    position:absolute;
+
+.assign-upload i {
+    position: absolute;
     top: 20px;
-    right: 30px;   
+    right: 30px;
 }
-.assign-upload .btn{
+
+.assign-upload .btn {
     width: 100%;
 }
+
 .example-container {
     width: 500px;
     height: 300px;
     border: 1px solid rgba(0, 0, 0, 0.5);
-  }
-  
-  .example-sidenav-content {
+}
+
+.example-sidenav-content {
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: center;
-  }
-  
-  .example-sidenav {
+}
+
+.example-sidenav {
     padding: 20px;
-  }
-  .comment{
+}
+
+.comment {
     margin-top: 5px;
     background-color: white;
     padding: 20px 5px 10px 10px;
     color: black;
     border-radius: 10px;
     box-shadow: 0px 1px 3px black;
-  }
-  .showfilename{
-      border: 0px;
-  }
-.submit-assign{
+}
+
+.showfilename {
+    border: 0px;
+}
+
+.submit-assign {
     min-width: 300px;
     margin-top: 2px;
 }

@@ -17,37 +17,36 @@ export class MarksComponent implements OnInit {
   AssignmentArraysize:Number
   marks:[any][any];
   gotMarks:any
+  isloaded: boolean=false;
 
   constructor(private streampost:StreamsrvService,
     private activeRoute:ActivatedRoute,
     private assign:AssignsrvService,) { }
   ngOnInit(): void {
+
+    setInterval(() => {
+      this.isloaded=true 
+    }, 2000);
+    
     this.classId=this.activeRoute.snapshot.paramMap.get('id')
 
     this.streampost.getUserlist(this.classId).subscribe(res=>{
-      // console.log(res);
       this.userDetail=res
     })
     
     this.assign.getAssignment(this.classId).subscribe(res=>{
-      this.assignments=res      
-      // console.log(res)
-      this.AssignmentArraysize= [...this.assignments].length
-      console.log(this.AssignmentArraysize);
-      
+      this.assignments=res       
     })
-    // console.log("hey");
     
     this.assign.getAllUserAssignment(this.classId).subscribe(res=>{
       this.userAssignment=res
-     
     })
     
   }
   getMarks(userid:any,assignId:any){
   let marks=[...this.userAssignment].find((el:any)=>{
      if(el.owner===userid && el.assignment._id===assignId) return el.marks
-     })
-     return marks?marks.marks:0
+    })
+    return marks?marks.marks:0
   }
 }

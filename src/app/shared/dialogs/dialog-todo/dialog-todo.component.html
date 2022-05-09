@@ -1,45 +1,34 @@
 <mat-card class="todoDialog">
-    <mat-card-header>
-        <mat-card-title>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Microsoft_To-Do_icon.png" alt="" height="20px"> 
-          Todo</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-form-field appearance="fill">
-            <mat-label>Status</mat-label>
-            <mat-select>
-              <mat-option>Assign</mat-option>
-              <mat-option>Missing</mat-option>
-              <mat-option>Done</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Subject</mat-label>
-            <mat-select>
-              <mat-option>All</mat-option>
-              <mat-option *ngFor="let jclass of joinclasses">{{jclass.class.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        <!-- <mat-form-field appearance="fill">
-            <mat-label>Duedate</mat-label>
-            <mat-select>
-              <mat-option>No-duedate</mat-option>
-              <mat-option>with-Duedate</mat-option>
-            </mat-select>
-         </mat-form-field> -->
-        <button class="btn btn-outline-primary">Apply</button>
-        <hr>
-           <div class="todo-list">
-               <ul>
-                   <li routerLink="/Instruction/{{assign._id}}" *ngFor="let assign of assignments"> 
-                     <a  style="color: black;">
-                     <img src="https://openclipart.org/image/800px/215492" 
-                          style="margin-right: 50px;" 
-                          alt="" height="30px"><b>{{assign.title}}</b><i style="color:gray;float: right;">DueDate: {{assign.duedate|date}}</i>
-                        </a>
-                        </li>
-            </ul>
-           </div>
-    </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Microsoft_To-Do_icon.png" alt="" height="20px">
+      Todo
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <br>
+    <select name="" id="" class="form-control" style="width: 30%;float: left;margin-right: 5px;"
+      (change)="onStatusChange($event)">
+      <option value="all">All Status</option>
+      <option value="Assign">Assign</option>
+      <option value="missing">missing</option>
+      <option value="handed in">handed in</option>
+    </select>
+    <select name="" id="" class="form-control" style="width: 30%;" (change)="onClassChange($event)">
+      <option value="all">All Class</option>
+      <option value="{{jclass.class._id}}" *ngFor="let jclass of joinclasses">{{jclass.class.name}}</option>
+    </select>
+    <hr>
+    <div class="todo-list">
+      <ul>
+        <li routerLink="/Instruction/{{assign.assignment._id}}" *ngFor="let assign of assignments">
+          <a style="color: black;">
+            <img src="https://openclipart.org/image/800px/215492" style="margin-right: 50px;" alt=""
+              height="30px"><b>{{assign.assignment.title}}</b><i style="color:gray;float: right;">DueDate:
+              {{assign.assignment.duedate|date}}</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </mat-card-content>
 </mat-card>

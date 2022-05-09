@@ -1,168 +1,161 @@
-
-<div class="fram" >
+<div class="fram">
     <app-header></app-header>
-    <button class="todo"  
-    data-toggle="tooltip" 
-    data-placement="bottom" 
-    title="ToDo"
-    (click)="onTodo()"
-    >
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Microsoft_To-Do_icon.png" alt="" style="height: inherit;width: inherit;">
-    </button>
-    <button class="todo setting"  
-    data-toggle="tooltip" 
-    data-placement="bottom" 
-    title="Setting"
-    (click)="onsetting()"
-    >
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Windows_Settings_app_icon.png" alt="" style="height: 30px;width: 30px;">
-    </button>
-    
-    <div id="home" class="jumbotron jumbotr" align="center">
-        <div class="container-wel" align="center">
-            <iframe src="https://embed.lottiefiles.com/animation/102926" style="border: 0px;"></iframe>
-            <!-- <iframe src="https://embed.lottiefiles.com/animation/103586" style="border: 0px;"></iframe> -->
-            <!-- <img src="" alt="" srcset=""> -->
-            <!-- <img width="200" src="https://i.pinimg.com/originals/08/1d/9f/081d9fbd94372cd42dc6b0368f4628f8.png"
-                alt="logo"> -->
-            <h1>Where teaching and learning come together</h1>
-            <p>MyClass is your all-in-one place for teaching and learning. Our easy-to-use and secure tool
-                helps educators manage, measure, and enrich learning experiences.
-            </p>
+    <div *ngIf="isloaded">
+        <button class="todo" data-toggle="tooltip" data-placement="bottom" title="ToDo" (click)="onTodo()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Microsoft_To-Do_icon.png" alt=""
+                style="height: inherit;width: inherit;">
+        </button>
+        <button class="todo setting" data-toggle="tooltip" data-placement="bottom" title="Setting"
+            (click)="onsetting()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Windows_Settings_app_icon.png" alt=""
+                style="height: 30px;width: 30px;">
+        </button>
 
-        </div>
-        <div class="container1 row">
-            <div class="card1 col-lg-3">
-                <div class="face face1">
-                    <div class="content" style="color:white">
-                        <img
-                            src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/design_128.png?raw=true">
-                        <h3>Create class</h3>
+        <div id="home" class="jumbotron jumbotr" align="center">
+            <div class="container-wel" align="center">
+                <iframe src="https://embed.lottiefiles.com/animation/102926" style="border: 0px;"></iframe>
+                <!-- <iframe src="https://embed.lottiefiles.com/animation/103586" style="border: 0px;"></iframe> -->
+                <!-- <img src="" alt="" srcset=""> -->
+                <!-- <img width="200" src="https://i.pinimg.com/originals/08/1d/9f/081d9fbd94372cd42dc6b0368f4628f8.png"
+                alt="logo"> -->
+                <h1>Where teaching and learning come together</h1>
+                <p>MyClass is your all-in-one place for teaching and learning. Our easy-to-use and secure tool
+                    helps educators manage, measure, and enrich learning experiences.
+                </p>
+
+            </div>
+            <div class="container1 row">
+                <div class="card1 col-lg-3">
+                    <div class="face face1">
+                        <div class="content" style="color:white">
+                            <img
+                                src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/design_128.png?raw=true">
+                            <h3>Create class</h3>
+                        </div>
                     </div>
-                </div>
-                <div class="face face2 ">
-                    <div class="content">
-                        <form [formGroup]="classForm" (ngSubmit)="addClass()">
-                            <!-- <p> -->
-                                <input 
-                                    type="text" 
-                                    name="name" 
-                                    class="form-control" 
-                                    placeholder="Class name"
-                                    formControlName="name"
-                                    ><p *ngIf="!classForm.controls['name'].valid && classForm.controls['name'].touched" class="err">
-                                       <b>Classname is required</b></p> 
-                                    <br>
-                                    <!-- <span 
+                    <div class="face face2 ">
+                        <div class="content">
+                            <form [formGroup]="classForm" (ngSubmit)="addClass()">
+                                <!-- <p> -->
+                                <input type="text" name="name" class="form-control" placeholder="Class name"
+                                    formControlName="name">
+                                <p *ngIf="!classForm.controls['name'].valid && classForm.controls['name'].touched"
+                                    class="err">
+                                    <b>Classname is required</b>
+                                </p>
+                                <br>
+                                <!-- <span 
                                         class="error" 
                                         *ngIf="classForm.controls['name'].dirty && classForm.hasError('required','name')"> 
                                         Class name is Required</span> -->
-                                    <input 
-                                    type="text" 
-                                    name="subject" 
-                                    class="form-control" 
-                                    placeholder="Subject"
+                                <input type="text" name="subject" class="form-control" placeholder="Subject"
                                     formControlName="subject">
-                                    <p *ngIf="!classForm.controls['subject'].valid && classForm.controls['subject'].touched" class="err"> 
-                                        <b>Subject is Required</b></p>
-                                    <br>
-                                    <!-- <input type="text" 
+                                <p *ngIf="!classForm.controls['subject'].valid && classForm.controls['subject'].touched"
+                                    class="err">
+                                    <b>Subject is Required</b>
+                                </p>
+                                <br>
+                                <!-- <input type="text" 
                                             name="owner" 
                                             formControlName="owner" 
                                             [value]="this.user._id"> -->
-                            <!-- </p> -->
-                            <button 
-                                class="btn btn-primary"
-                                type="submit"
-                                [hidden]="!classForm.valid"
-                                >Create</button>    
-                        </form>
+                                <!-- </p> -->
+                                <button class="btn btn-primary" type="submit"
+                                    [hidden]="!classForm.valid">Create</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card1 col-lg-3">
-                <div class="face face1">
-                    <div class="content">
-                        <img
-                            src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/code_128.png?raw=true">
-                        <h3>Join class</h3>
+                <div class="card1 col-lg-3">
+                    <div class="face face1">
+                        <div class="content">
+                            <img
+                                src="https://github.com/Jhonierpc/WebDevelopment/blob/master/CSS%20Card%20Hover%20Effects/img/code_128.png?raw=true">
+                            <h3>Join class</h3>
+                        </div>
                     </div>
-                </div>
 
-                <div class="face face2">
-                    <div class="content">
-                        <form [formGroup]="joinClassForm" (ngSubmit)="joinClass()">
-                        
-                            <input 
-                                type="text" 
-                                name="classcode" 
-                                class="form-control" 
-                                placeholder="Class Code"
-                                formControlName="classcode">
-                                    <p *ngIf="!joinClassForm.controls['classcode'].valid && joinClassForm.controls['classcode'].touched" class="err"> 
-                                        <b>classcode is Required</b></p>
-                                    <br>
-                        <br><i>Class code provided by Admin of class</i><br>
-                        <button class="btn btn-primary" 
-                                type="submit"
-                                [hidden]="!joinClassForm.valid"
-                                >Join</button>
-                        </form>
+                    <div class="face face2">
+                        <div class="content">
+                            <form [formGroup]="joinClassForm" (ngSubmit)="joinClass()">
+
+                                <input type="text" name="classcode" class="form-control" placeholder="Class Code"
+                                    formControlName="classcode">
+                                <p *ngIf="!joinClassForm.controls['classcode'].valid && joinClassForm.controls['classcode'].touched"
+                                    class="err">
+                                    <b>classcode is Required</b>
+                                </p>
+                                <br>
+                                <br><i>Class code provided by Admin of class</i><br>
+                                <button class="btn btn-primary" type="submit"
+                                    [hidden]="!joinClassForm.valid">Join</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="class" class="jumbotron jbr">
-        
-        <!-- <h1 style="color: #f9f7f7; font-family:monospace ;font-size: 40px;"   >Class</h1><hr style="background-color: white;"> -->
+        <div id="class" class="jumbotron jbr">
+
+            <!-- <h1 style="color: #f9f7f7; font-family:monospace ;font-size: 40px;"   >Class</h1><hr style="background-color: white;"> -->
             <div class="row">
-    
-            <a class="col-lg-2" routerLink="/stream/post/{{class._id}}" *ngFor="let class of classes" >
-                <div class="card">
-                    <div class="imge">
-                        <img src="http://localhost:3000/{{class.image[0]?class.image[0].path:''}}" alt="" srcset="" class="imge" >
-                    </div>
-                    <div class="card-body cust">
-                        <h1 style="padding-left: 20px;"><b>{{class.name}}</b></h1>
-                        <div class="crdbody">
-                            <b>{{class.subject}}</b>
+
+                <a class="col-lg-2" routerLink="/stream/post/{{class._id}}" *ngFor="let class of classes">
+                    <div class="card">
+                        <div class="imge">
+                            <img src="http://localhost:3000/{{class.image[0]?class.image[0].path:''}}" alt="" srcset=""
+                                class="imge">
                         </div>
-                        <div class="crdfoot">
-                            <hr><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
-                                <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
-                              </svg>
-                            <i class="badge bg-primary bg-create">Created</i>
+                        <div class="card-body cust">
+                            <h1 style="padding-left: 20px;"><b>{{class.name}}</b></h1>
+                            <div class="crdbody">
+                                <b>{{class.subject}}</b>
+                            </div>
+                            <div class="crdfoot">
+                                <hr><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z" />
+                                </svg>
+                                <i class="badge bg-primary bg-create">Created</i>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
 
-            <a class="col-lg-2" routerLink="/stream/post/{{jclass.class._id}}" *ngFor="let jclass of joinclasses" >
-                <div class="card" *ngIf="jclass.class!==null">
-                    <div class="imge">
-                        <img src="http://localhost:3000/{{jclass.class.image[0]?jclass.class.image[0].path:''}}" alt="" srcset="" class="imge" >
-                    </div>
-                    <div class="card-body cust">
-                        <h1 style="padding-left: 20px;"><b>{{jclass.class.name}}</b></h1>
-                        <div class="crdbody">
-                            <b>{{jclass.class.subject}}</b>
+                <a class="col-lg-2" routerLink="/stream/post/{{jclass.class._id}}" *ngFor="let jclass of joinclasses">
+                    <div class="card" *ngIf="jclass.class!==null">
+                        <div class="imge">
+                            <img src="http://localhost:3000/{{jclass.class.image[0]?jclass.class.image[0].path:''}}"
+                                alt="" srcset="" class="imge">
                         </div>
-                        <div class="crdfoot">
-                            <hr><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
-                                <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
-                              </svg>
+                        <div class="card-body cust">
+                            <h1 style="padding-left: 20px;"><b>{{jclass.class.name}}</b></h1>
+                            <div class="crdbody">
+                                <b>{{jclass.class.subject}}</b>
+                            </div>
+                            <div class="crdfoot">
+                                <hr><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z" />
+                                </svg>
 
-                            <i class="badge bg-success bg-create">Joined</i>
+                                <i class="badge bg-success bg-create">Joined</i>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-          </div>
-          <!-- <button class="btn bt-home" (click)="toHome()"><img src="https://img.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg?w=2000" alt="">
+                </a>
+            </div>
+            <!-- <button class="btn bt-home" (click)="toHome()"><img src="https://img.freepik.com/free-vector/home-icon-pin-deal-isolated-white_1284-48167.jpg?w=2000" alt="">
           </button> -->
+        </div>
     </div>
 </div>
+
+<div style="width: 100%; text-align: center" *ngIf="!isloaded">
+    <img src="https://www.ispsolutions.co.za/sitepad-data/uploads//65ba488626025cff82f091336fbf94bb.gif" alt="">
+</div>
 <!-- 
-    ------------------------------------------------------- --> 
+    ------------------------------------------------------- -->

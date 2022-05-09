@@ -52,7 +52,6 @@ export class DialogAssignmentComponent implements OnInit{
     formData.append('file',this.image)
     formData.append('owner',this.userid)
     formData.append('classsub',this.classId)
-    // console.log(this.image);
     
     this.assign.addAssignment(formData)
         .subscribe((res)=>{
@@ -64,6 +63,7 @@ export class DialogAssignmentComponent implements OnInit{
         showConfirmButton: false,
         timer: 1500
       })
+    
       this.assignmentForm.reset()
     })
   }

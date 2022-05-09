@@ -21,7 +21,6 @@ export class DialogUserProfiileComponent implements OnInit {
 
   ngOnInit(): void {    
     this.assign.getuserAssignmentDetail(this.assign.assignId,this.assign.userId).subscribe(res=>{
-      console.log(res);
       this.userDetail=res
       this.userDetail= Object.assign({},...this.userDetail)
     })
@@ -32,7 +31,6 @@ export class DialogUserProfiileComponent implements OnInit {
   }
   submitdata(){
     const value = this.MarksForm.value
-    // console.log(value)
     let formData= new FormData()
     formData.append('marks', value['marks'])
     formData.append('assignment',this.userDetail.assignment._id)

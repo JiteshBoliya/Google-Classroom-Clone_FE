@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AssignsrvService } from 'src/app/shared/service/assignment.service';
+import { ClasssrvService } from 'src/app/shared/service/classsrv.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -29,14 +30,22 @@ export class AssignmentNavComponent implements OnInit {
   i=0;
   privateComment:any
   publicComment:any
+  isCreator: boolean;
+  userDetail: any;
+  isloaded:boolean=false
   
   
   constructor(private assign: AssignsrvService,
-    private activeRoute: ActivatedRoute) { }
+    private activeRoute: ActivatedRoute,
+    private classsub:ClasssrvService) { }
 
   ngOnInit(): void {
     this.status = "Assigned"
 
+     setInterval(() => {
+      this.isloaded=true 
+    }, 2000);
+    
     this.assignmentUploaded = false
     this.assign.assignId = this.activeRoute.snapshot.paramMap.get('id')
     this.assign.get_SpecificAssignment(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res => {
@@ -46,7 +55,6 @@ export class AssignmentNavComponent implements OnInit {
       this.assignId = this.assignment._id
       this.time = this.assignment.time
       this.duedate = this.assignment.duedate
-      // console.log(this.time);
 
       if (new Date() > new Date(this.duedate)) this.status = "missing"
 
@@ -59,14 +67,10 @@ export class AssignmentNavComponent implements OnInit {
       })
     })
     this.assign.getComment(this.activeRoute.snapshot.paramMap.get('id'),true).subscribe(res=>{
-      console.log("private");
-      console.log(res);
       this.privateComment=res
     })    
     
     this.assign.getComment(this.activeRoute.snapshot.paramMap.get('id'),false).subscribe(res=>{
-      console.log("public");
-      console.log(res);
       this.publicComment=res
     })    
 
@@ -76,6 +80,12 @@ export class AssignmentNavComponent implements OnInit {
     this.commentForm = new FormGroup({
       comment: new FormControl("")
     })
+    this.classsub.getUserImg(localStorage.getItem('userid')).subscribe(res=>{
+      this.userDetail=res
+    })
+
+    this.isCreator=this.classsub.isCreator
+    
 
   }
   uploadFileEvt(imgFile: any) {
@@ -92,7 +102,6 @@ export class AssignmentNavComponent implements OnInit {
 
     this.assign.addUserAssignment(formData)
       .subscribe((res) => {
-        console.log(res);
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -103,11 +112,16 @@ export class AssignmentNavComponent implements OnInit {
           console.log(err);
 
         }
-        // this.assignmentForm.reset()
+        this.assign.addUserAssignment({ owner: this.owner, assignment: this.assignId }).subscribe(res => {
+          if ([...res.result.file].length > 0) {
+            this.status = res.result.status
+            this.text = res.result.file[0].originalname
+            this.assignmentUploaded = true
+          }
+        })  
       })
   }
   addPublicComment(){
-    // console.log("hey");
     let formData = new FormData() 
     formData.append('comment',this.commentForm.get('comment')?.value)
     formData.append('owner', this.owner)
@@ -125,8 +139,11 @@ export class AssignmentNavComponent implements OnInit {
         }), (err: any) => {
           console.log(err);
         }
-        // this.assignmentForm.reset()
-      })
+        
+      this.assign.getComment(this.activeRoute.snapshot.paramMap.get('id'),false).subscribe(res=>{
+        this.publicComment=res
+      })   
+    })
   }
   addPrivateComment(){
     let formData = new FormData() 
@@ -147,7 +164,9 @@ export class AssignmentNavComponent implements OnInit {
         }), (err: any) => {
           console.log(err);
         }
-        // this.assignmentForm.reset()
+        this.assign.getComment(this.activeRoute.snapshot.paramMap.get('id'),true).subscribe(res=>{
+          this.privateComment=res
+        })
       })
   }
 

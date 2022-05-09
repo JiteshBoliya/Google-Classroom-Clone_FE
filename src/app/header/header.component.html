@@ -1,28 +1,20 @@
 <nav class="navbar navbar-expand navbar-light bg-faded">
-    <img width="40" alt="Classroom" src="https://i.pinimg.com/originals/08/1d/9f/081d9fbd94372cd42dc6b0368f4628f8.png" />
+    <img width="40" alt="Classroom"
+        src="https://i.pinimg.com/originals/08/1d/9f/081d9fbd94372cd42dc6b0368f4628f8.png" />
     <a class="navbar-brand" href="#">Classroom 2.O</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item ">
-            <a class="nav-link" (click)="toHome()" >Home</a>
+        <li class="nav-item">
+            <a class="nav-link" (click)="toHome()">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" (click)="toClass()" >Class</a>
+            <a class="nav-link" (click)="toClass()">Class</a>
         </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-        <button 
-        class="logoutbtn" 
-        type="button" 
-        name="logout" 
-        value="Loggaut" 
-        id="logout" 
-        *ngIf="uname!=null||uname==null" 
-        (click)="sweetAlert()"  
-        data-toggle="tooltip" 
-        data-placement="bottom" 
-        style="color: black;"
-        title="Logout" >
-        <b>{{uname}}</b>
+        <button class="logoutbtn" type="button" name="logout" value="Loggaut" id="logout"
+            *ngIf="uname != null || uname == null" (click)="sweetAlert()" data-toggle="tooltip" data-placement="bottom"
+            style="color: black" title="Logout">
+            <b>{{ uname }}</b>
         </button>
     </form>
 </nav>

@@ -1,76 +1,87 @@
-
-.cv{
+.cv {
     background-size: cover;
-    margin:5px;
+    margin: 5px;
     /* padding: 10px; */
     min-height: 20vh;
     position: relative;
-    border-radius:10px;
+    border-radius: 10px;
     padding: 0px;
-    color:white;
+    color: white;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
 }
-.footer{
+
+.footer {
     padding-left: 20px;
-    position:absolute;
+    position: absolute;
     bottom: 0px;
 }
-.jumbo-class-code{
+
+.jumbo-class-code {
     padding: 10px 0px 0px 20px;
-    color:black;
-    background-color:white;    
+    color: black;
+    background-color: white;
     box-shadow: 0 0px 7px rgba(0, 0, 0, 0.5);
 }
-.body-text{
-    height:max-content;
+
+.body-text {
+    height: max-content;
 }
-.jumbo-class-code h4{
-    color:maroon;
+
+.jumbo-class-code h4 {
+    color: maroon;
     font-weight: 600;
 }
 
-.in-post{
-    border:0px;
-    height:3    0px;
+.in-post {
+    border: 0px;
+    height: 3 0px;
     width: 100%;
-}.in-post:focus{
-    border-bottom: 0px;
-}
-.in-comment{
-    border:1px black solid;
-    height:40px;
-    padding: 20px;
-    width: 90%;
-    border-radius:20px;
 }
 
-.in-post{
+.in-post:focus {
+    border-bottom: 0px;
+}
+
+.in-comment {
+    border: 1px black solid;
+    height: 40px;
+    padding: 20px;
+    width: 90%;
+    border-radius: 20px;
+}
+
+.in-post {
     /* border:1px black solid; */
-    height:40px;
+    height: 40px;
     padding: 20px;
     width: 70%;
-    border-radius:20px;
+    border-radius: 20px;
 }
-.btn-ctr{
-    height:41px;
+
+.btn-ctr {
+    height: 41px;
     /* border-radius: 20px; */
     float: right;
 }
-.btn-item{
-    height:40px;
+
+.btn-item {
+    height: 40px;
     /* border-radius: 100px; */
     /* border: 0px; */
     background-color: #b5b5b5;
 }
-.atch-btn{
+
+.atch-btn {
     height: inherit;
 }
-.atch-btn:hover{
+
+.atch-btn:hover {
     box-shadow: 0px 0px 5px rgb(120, 119, 119);
     border-radius: 20px;
     height: 41px;
 }
-.bod{
+
+.bod {
     /* background-image: url('cool-background (2).png'); */
     /* background-color: rgb(208, 208, 208); */
     /* background: linear-gradient(to top, #ffffff 0%, #013256 100%); */
@@ -78,33 +89,39 @@
     background-attachment: fixed;
     min-height: 100vh;
 }
-.p-body{
-    height:fit-content;
+
+.p-body {
+    height: fit-content;
     min-height: 100px;
     /* background-color: #e3f1fb; */
 }
-.body-text{
+
+.body-text {
     word-break: break-all;
 }
-.comment-list ul li{
+
+.comment-list ul li {
     list-style-type: none;
 }
+
 #main {
     transition: margin-left .5s;
     padding: 20px;
-  }
-  .NgxEditor__Wrapper{
-      min-height: 300px;
-  }
-  .btn-uploadimg{
-      background-image: url('https://icon-library.com/images/android-camera-icon/android-camera-icon-9.jpg');
-      position:absolute; 
-      top: 5px;
-      right: 5px;
-      color: white;
-      background-position: center;
-      background-size: cover;
-      height: 30px;
-      background-color:white;
-      width: 30px;
-  }
+}
+
+.NgxEditor__Wrapper {
+    min-height: 300px;
+}
+
+.btn-uploadimg {
+    background-image: url('https://icon-library.com/images/android-camera-icon/android-camera-icon-9.jpg');
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: white;
+    background-position: center;
+    background-size: cover;
+    height: 30px;
+    background-color: white;
+    width: 30px;
+}
