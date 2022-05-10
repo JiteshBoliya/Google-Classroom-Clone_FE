@@ -24,14 +24,15 @@ export class MarksComponent implements OnInit {
     private assign:AssignsrvService,) { }
   ngOnInit(): void {
 
-    setInterval(() => {
-      this.isloaded=true 
-    }, 2000);
+    // setInterval(() => {
+    //   this.isloaded=true 
+    // }, 2000);
     
     this.classId=this.activeRoute.snapshot.paramMap.get('id')
 
     this.streampost.getUserlist(this.classId).subscribe(res=>{
       this.userDetail=res
+      this.isloaded=true
     })
     
     this.assign.getAssignment(this.classId).subscribe(res=>{

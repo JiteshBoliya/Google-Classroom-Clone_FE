@@ -1,92 +1,152 @@
-<div class="bod ">
-
-    <app-assignment></app-assignment>
-    <div class="container container-data" *ngIf="isloaded">
-        <div>
-            <div class="row card-counter" style="height: 100px; margin-top: 10px;">
-                <div class="card-status">
-                    <h1>{{statAssign}}</h1>
-                    <h2>Assign</h2>
-                </div>
-                <div class="card-status">
-                    <h1>{{statHandedIn}}</h1>
-                    <h2>Handed In</h2>
-                </div>
-                <button style="position: absolute; left: 0px;" class="btn btn-primary" (click)="OnRefreshData()">
-                    Refresh Data
-                </button>
-            </div>
-            <hr style="background-color: white;">
-
-            <div class="row">
-                <div class="col-md-6">
-
-                    <select name="" id="" class="form-control" style="width: 30%;" (change)="onSelect($event.target)">
-                        <option value="">All</option>
-                        <option value="Assigned">Assigned</option>
-                        <option value="handed In">Hand In</option>
-                        <option value="missing">Missing</option>
-                        <option value="Done late">Done late</option>
-                        <option value="marked">Marked</option>
-                    </select><br>
-                    <a style="cursor: pointer;" *ngFor="let user of userlist">
-                        <div style="color: black; margin-top: 10px;display:flex;float: left; margin-left: 5px; ">
-
-                            <div *ngIf="selectStatus==user.status||!selectStatus" class="card"
-                                style="padding: 10px;width:350px">
-                                <h3>{{user.owner.name}}</h3>
-                                <span *ngIf="user.status=='Assigned'" style="color: green;">{{user.status}}</span>
-                                <span *ngIf="user.status=='missing'" style="color: red;">{{user.status}}</span>
-                                <span *ngIf="user.status=='marked'" style="color: yellow;">{{user.status}}</span>
-                                <span *ngIf="user.status=='handed In'"
-                                    style="color: rgb(1, 82, 7);">{{user.status}}</span>
-                                <span *ngIf="user.status=='Done late'"
-                                    style="color: rgb(35, 122, 244);">{{user.status}}</span>
-                                <button class="btn btn-outline-success btn-chat"
-                                    (click)="onChat(user.owner._id)">Chat</button>
-                                <button class="btn btn-outline-primary btn-info"
-                                    (click)="onSubmit(user.owner._id)">Info</button>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <div class="jumbotron element" *ngIf="privateComment" style="min-height: 70vh;">
-                        <div class="PRC-header">
-                            <b> {{privateComment?privateComment[0].owner.name:"Select user"}}</b>
-                        </div>
-                        <div class="PRC-body">
-                            <span *ngFor="let comment of privateComment">
-                                <i>:: {{comment.comment}}</i><br>
-                            </span>
-                        </div>
-                        <div class="PRC-footer">
-                            <div class="col-md-12 " style="padding-top: 7px">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Private comment" />
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="submit">
-                                            Post
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="jumbotron" *ngIf="!privateComment"
-                        style="min-height:100%;background-color: transparent;" align="center">
-                        <div style="width: 100%; height:inherit; text-align: center">
-                            <iframe src="https://embed.lottiefiles.com/animation/104753" style="border: 0px;"></iframe>
-                            <h2>Student`s private chat here</h2>
-                            <h5>"Select student first"</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="bod">
+  <app-assignment></app-assignment>
+  <div class="container container-data" *ngIf="isloaded">
+    <div>
+      <div class="row card-counter" style="height: 100px; margin-top: 10px">
+        <div class="card-status">
+          <h1>{{ statAssign }}</h1>
+          <h2>Assign</h2>
         </div>
-    </div>
+        <div class="card-status">
+          <h1>{{ statHandedIn }}</h1>
+          <h2>Handed In</h2>
+        </div>
+        <!-- <button style="position: relative; left: 0px;" class="btn btn-primary" (click)="OnRefreshData()">
+                    Refresh Data
+                </button> -->
+      </div>
+      <hr style="background-color: white" />
 
-    <div style="width: 100%; text-align: center" *ngIf="!isloaded">
-        <img src="https://www.ispsolutions.co.za/sitepad-data/uploads//65ba488626025cff82f091336fbf94bb.gif" alt="">
+      <div class="row">
+        <div class="col-md-6">
+          <select
+            name=""
+            id=""
+            class="form-control"
+            style="width: 30%"
+            (change)="onSelect($event.target)"
+          >
+            <option value="">All</option>
+            <option value="Assigned">Assigned</option>
+            <option value="handed In">Hand In</option>
+            <option value="missing">Missing</option>
+            <option value="Done late">Done late</option>
+            <option value="marked">Marked</option></select
+          ><br />
+          <a style="cursor: pointer" *ngFor="let user of userlist">
+            <div
+              style="
+                color: black;
+                margin-top: 10px;
+                display: flex;
+                float: left;
+                margin-left: 5px;
+              "
+            >
+              <div
+                *ngIf="selectStatus == user.status || !selectStatus"
+                class="card"
+                style="padding: 10px; width: 350px"
+              >
+                <h3>{{ user.owner.name }}</h3>
+                <span *ngIf="user.status == 'Assigned'" style="color: green">{{
+                  user.status
+                }}</span>
+                <span *ngIf="user.status == 'missing'" style="color: red">{{
+                  user.status
+                }}</span>
+                <span *ngIf="user.status == 'marked'" style="color: yellow">{{
+                  user.status
+                }}</span>
+                <span
+                  *ngIf="user.status == 'handed In'"
+                  style="color: rgb(1, 82, 7)"
+                  >{{ user.status }}</span
+                >
+                <span
+                  *ngIf="user.status == 'Done late'"
+                  style="color: rgb(35, 122, 244)"
+                  >{{ user.status }}</span
+                >
+                <button
+                  class="btn btn-outline-success btn-chat"
+                  (click)="onChat(user.owner._id)"
+                >
+                  Chat
+                </button>
+                <button
+                  class="btn btn-outline-primary btn-info"
+                  (click)="onSubmit(user.owner._id)"
+                >
+                  Info
+                </button>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <div
+            class="jumbotron element"
+            *ngIf="privateComment"
+            style="min-height: 70vh"
+          >
+            <div class="PRC-header">
+              <b>
+                {{
+                  privateComment ? privateComment[0].owner.name : "Select user"
+                }}</b
+              >
+            </div>
+            <div class="PRC-body">
+              <span *ngFor="let comment of privateComment">
+                <i>:: {{ comment.comment }}</i
+                ><br />
+              </span>
+            </div>
+            <div class="PRC-footer">
+                <form [formGroup]="commentForm" (ngSubmit)="addPrivateComment()">
+              <div class="col-md-12" style="padding-top: 7px">
+                <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Private comment"
+                    formControlName="comment"
+                  />
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">
+                      Post
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            </div>
+          </div>
+          <div
+            class="jumbotron"
+            *ngIf="!privateComment"
+            style="min-height: 100%; background-color: transparent"
+            align="center"
+          >
+            <div style="width: 100%; height: inherit; text-align: center">
+              <iframe
+                src="https://embed.lottiefiles.com/animation/104753"
+                style="border: 0px"
+              ></iframe>
+              <h2>Student`s private chat here</h2>
+              <h5>"Select student first"</h5>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div style="width: 100%; text-align: center" *ngIf="!isloaded">
+    <img
+      src="https://www.ispsolutions.co.za/sitepad-data/uploads//65ba488626025cff82f091336fbf94bb.gif"
+      alt=""
+    />
+  </div>
 </div>

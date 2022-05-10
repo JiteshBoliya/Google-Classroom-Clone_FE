@@ -42,7 +42,7 @@ export class HomepageComponent implements OnInit {
 
     setInterval(() => {
       this.isloaded=true 
-    }, 2000);
+    }, 1000);
     
 
     this.webdata.classSubject.subscribe(res=>{

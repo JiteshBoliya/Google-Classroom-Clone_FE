@@ -18,7 +18,10 @@ export class DialogTodoComponent implements OnInit {
     this.classsub.classlist(localStorage.getItem('userid')).subscribe(res=>{
       this.joinclasses=res
     })
-    this.classsub.get_todo(localStorage.getItem('userid')).subscribe(res=>{
+    // this.classsub.get_todo(localStorage.getItem('userid')).subscribe(res=>{
+    //   this.assignments=res
+    // })
+    this.classsub.get_todo_classwise(localStorage.getItem('userid'),'*').subscribe(res=>{
       this.assignments=res
     })
   }
@@ -30,7 +33,8 @@ export class DialogTodoComponent implements OnInit {
   onStatusChange(status:any){
     this.classsub.get_todo_statuswise(localStorage.getItem('userid'),status.target.value).subscribe(res=>{
       this.assignments=res
+    console.log(this.assignments);
+    
     })
   }
-  
 }

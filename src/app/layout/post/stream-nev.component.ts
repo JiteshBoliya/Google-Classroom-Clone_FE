@@ -49,9 +49,9 @@ export class StreamNevComponent implements OnInit,OnDestroy {
     private assign:AssignsrvService) { }
   ngOnInit(): void {
 
-    setInterval(() => {
-      this.isloaded=true 
-    }, 2000);
+    // setInterval(() => {
+    //   this.isloaded=true 
+    // }, 2000);
 
 
     //Get upcomming assignment list
@@ -107,6 +107,7 @@ export class StreamNevComponent implements OnInit,OnDestroy {
   this.streampost.getClassDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res=>{
     this.classDetail=res
     this.classDetail=Object.assign({},...this.classDetail)
+    this.isloaded=true
     console.log(this.classDetail);
   })
 

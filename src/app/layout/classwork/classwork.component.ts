@@ -30,9 +30,9 @@ export class ClassworkComponent implements OnInit {
 
   ngOnInit(): void {
 
-    setInterval(() => {
-      this.isloaded = true
-    }, 2000);
+    // setInterval(() => {
+    //   this.isloaded = true
+    // }, 2000);
 
 
     this.classId = this.activeRoute.snapshot.paramMap.get('id')
@@ -40,6 +40,7 @@ export class ClassworkComponent implements OnInit {
 
     this.assign.getAssignment(this.classId).subscribe(res => {
       this.assignments = res
+      this.isloaded=true
     })
     this.isCreator = this.classsub.isCreator
 

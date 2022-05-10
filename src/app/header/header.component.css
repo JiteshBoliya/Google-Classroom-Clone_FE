@@ -22,7 +22,6 @@
   border-radius: 20px;
   cursor: pointer;
 }
-
 .logoutbtn:hover::after {
   background-color: rgb(185, 5, 5);
   padding: 10px;

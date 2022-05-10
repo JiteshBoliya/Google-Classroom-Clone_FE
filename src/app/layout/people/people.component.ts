@@ -25,9 +25,9 @@ export class PeopleComponent implements OnInit {
 
   ngOnInit(): void {
 
-    setInterval(() => {
-      this.isloaded=true 
-    }, 2000);
+    // setInterval(() => {
+    //   this.isloaded=true 
+    // }, 2000);
 
     this.streampost.getClassDetail(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res => {
       this.classDetail = res
@@ -42,6 +42,7 @@ export class PeopleComponent implements OnInit {
     this.streampost.getUserlist(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res => {
       console.log(res);
       this.userDetail = res
+      this.isloaded=true
     })
   }
   onDelete() {
@@ -55,11 +56,13 @@ export class PeopleComponent implements OnInit {
       confirmButtonText: 'Yes, remove it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Person removed from class.',
-          'success'
-        )
+        this.classsub.delete_classlistUser(true).subscribe(res=>{
+          Swal.fire(
+            'Deleted!',
+            'Person removed from class.',
+            'success'
+          )
+        })
       }
     })
   }

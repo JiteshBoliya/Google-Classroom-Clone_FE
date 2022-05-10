@@ -9,7 +9,7 @@ export class ClasssrvService {
   // classsubject=new BehaviorSubject<String>(null);
   classchanged = new Subject<Class[]>();
   class:Class[] = [];
-  isCreator:boolean=false
+  isCreator:boolean
   constructor(private http: HttpClient) {}
   
   // #Get all class
@@ -43,16 +43,19 @@ export class ClasssrvService {
   getUserImg(id:any){
     return this.http.get(`http://localhost:3000/user/img/`+id)
   }
-  get_todo(id:any){
-    return this.http.get(`${this.assignUrl}/todo/`+id)
-  }
+  // get_todo(id:any){
+  //   return this.http.get(`${this.assignUrl}/todo/`+id)
+  // }
   get_todo_classwise(id:any,classid:any){
-    return this.http.get(`${this.assignUrl}/todo/`+id+`/`+classid)
+    return this.http.get(`${this.assignUrl}/todo/class/`+id+`/`+classid)
   }
   get_todo_statuswise(id:any,status:any){
-    return this.http.get(`${this.assignUrl}/todo/`+id+`/`+status)
+    return this.http.get(`${this.assignUrl}/todo/status/`+id+`/`+status)
   }
   update_setting(id:any,data:any){
     return this.http.post<any>(`http://localhost:3000/setting/`+id,data)
+  }
+  delete_classlistUser(id:any){
+    return this.http.post(`${this.url}/user/delete/`+id,{isDeleted:true})
   }
 }

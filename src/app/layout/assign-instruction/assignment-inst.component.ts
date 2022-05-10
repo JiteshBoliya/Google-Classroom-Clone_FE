@@ -42,16 +42,16 @@ export class AssignmentNavComponent implements OnInit {
   ngOnInit(): void {
     this.status = "Assigned"
 
-     setInterval(() => {
-      this.isloaded=true 
-    }, 2000);
+    //  setInterval(() => {
+    //   this.isloaded=true 
+    // }, 2000);
     
     this.assignmentUploaded = false
     this.assign.assignId = this.activeRoute.snapshot.paramMap.get('id')
     this.assign.get_SpecificAssignment(this.activeRoute.snapshot.paramMap.get('id')).subscribe(res => {
       this.assignment = res
       this.assignment=Object.assign({},...this.assignment)
-      this.owner = this.assignment.owner._id
+      this.owner = localStorage.getItem('userid')
       this.assignId = this.assignment._id
       this.time = this.assignment.time
       this.duedate = this.assignment.duedate
@@ -82,6 +82,7 @@ export class AssignmentNavComponent implements OnInit {
     })
     this.classsub.getUserImg(localStorage.getItem('userid')).subscribe(res=>{
       this.userDetail=res
+      this.isloaded=true
     })
 
     this.isCreator=this.classsub.isCreator

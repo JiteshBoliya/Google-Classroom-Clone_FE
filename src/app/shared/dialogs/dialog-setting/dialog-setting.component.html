@@ -16,7 +16,7 @@
       <input hidden (change)="uploadFileEvt($event)" #fileInput formControlName="file" multiple name="file" type="file"
         id="file"><i>{{text}}</i>
       <br><br><br>
-      <select name="" id="" class="form-control" style="width: 200px;float: right;">
+      <select [disabled]="true" name="" id="" class="form-control" style="width: 200px;float: right;">
         <option value="">All</option>
         <option value="" *ngFor="let class of classes">{{class.name}}</option>
       </select>
@@ -28,12 +28,12 @@
           <!-- <mat-slide-toggle [(ngModel)]="modal" (change)="ngOnInit()" color="primary">
                         Label
                     </mat-slide-toggle> -->
-          <ng-toggle [value]="true" [color]="{unchecked: '#939da2',checked: '#f62d51'}" [height]="15" [width]="30">
+          <ng-toggle [disabled]="true" [value]="true" [color]="{unchecked: '#939da2',checked: '#f62d51'}" [height]="15" [width]="30">
           </ng-toggle>
         </div>
         <div class="col-md-11">private comment on work</div>
         <div>
-          <ng-toggle [value]="true" [color]="{unchecked: '#939da2',checked: '#f62d51'}" [height]="15" [width]="30">
+          <ng-toggle [disabled]="true" [value]="true" [color]="{unchecked: '#939da2',checked: '#f62d51'}" [height]="15" [width]="30">
           </ng-toggle>
         </div>
       </div>
@@ -58,6 +58,6 @@
       </div>
     </div>
 
-    <button class="btn btn-success" style="position: absolute;right: 20px;bottom: 5px;">Save</button>
+    <button [disabled]="true" class="btn btn-success" style="position: absolute;right: 20px;bottom: 5px;">Save</button>
   </mat-card-content>
 </mat-card>
