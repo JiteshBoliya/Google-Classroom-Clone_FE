@@ -1,27 +1,46 @@
-# MyClass
+# Google-classroom-clone_FE [Angular version 13.2.1]
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.1.
+A Google Classroom Clone is a web-based educational platform designed to replicate the core functionality and features of Google Classroom, a popular learning management system used by educators and students for online teaching and learning. This clone project aims to provide a similar set of tools and capabilities to facilitate remote learning and classroom management. Here's a detailed description of a Google Classroom Clone:
 
-## Development server
+1. **User Registration and Authentication**: 
+  The platform allows teachers and students to create accounts, providing authentication mechanisms to ensure secure access to the system.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. **Classroom Creation and Management**: 
+  Teachers can create virtual classrooms for specific courses or subjects. 
+  They can set a class name, description, and cover image, and manage class memberships.
 
-## Code scaffolding
+3. **Assignment and Content Management**: 
+  Teachers can upload and organize learning materials such as assignments, lecture notes, videos, and links within their classrooms.
+  Students can access and download these resources.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. **Assignment Submission and Grading**: 
+  Teachers can create assignments with due dates, attach files, and specify grading criteria. 
+  Students can submit assignments electronically, and teachers can grade and provide feedback within the system.
 
-## Build
+5. **Discussion Boards and Collaboration**: 
+  Classrooms feature discussion boards where students and teachers can engage in discussions, ask questions, and collaborate on projects. 
+  Real-time chat and comment features may also be available.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+6. **Google Drive Integration**: 
+  Optionally, you can integrate with Google Drive to seamlessly store and share files, including Google Docs, Sheets, and Slides, within the platform.
 
-## Running unit tests
+7. **Student Progress Tracking**: 
+  Teachers can monitor student progress by viewing assignment submission statuses, grades, and overall performance.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+8. **User Roles and Permissions**: 
+  Implement role-based access control, allowing administrators, teachers, and students to have different levels of access and permissions within the system.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Technology Stack:
 
-## Further help
+The Google-Classroom-Clone project can be developed using a wide range of technologies, including but not limited to:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Frontend: 
+<p>
+<img src="https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg" width="40PX" alt="Angular">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png" width="40PX" alt="Typescript">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" width="50PX" alt="HTML5">
+<img src="https://cdn.freebiesupply.com/logos/large/2x/css3-logo-png-transparent.png" width="50PX" alt="CSS3">
+</p>
+
+**For back-end repository click on <a href="https://github.com/jitesh8182/Google-Classroom-Clone_BE">Google-Classroom-Clone_BE</a>.**
